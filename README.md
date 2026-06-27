@@ -1,7 +1,7 @@
 # Plehndm.github.io
 
-Personal portfolio site of **David Plehn** — showcasing software, AI/ML projects, and research.
-Built with [Jekyll](https://jekyllrb.com/) and the [al-folio](https://github.com/alshedivat/al-folio) theme (v0.16.3), deployed to GitHub Pages.
+Personal portfolio of **David Plehn** — software, AI/ML projects, and research.
+Built with [Jekyll](https://jekyllrb.com/) and the **Forty** theme ([HTML5 UP](https://html5up.net/), Jekyll port by [Andrew Banchich](https://github.com/andrewbanchich/forty-jekyll-theme)). Deployed to GitHub Pages via GitHub Actions.
 
 Live: https://plehndm.github.io
 
@@ -9,41 +9,32 @@ Live: https://plehndm.github.io
 
 | What | Where |
 |------|-------|
-| Homepage bio / hero | `_pages/about.md` |
-| Projects (cards + detail pages) | `_projects/*.md` — ordered by the `importance` field (lower = shown first) |
-| Publications | `_bibliography/papers.bib` |
-| CV / résumé page | `_data/cv.yml` (content) + `_pages/cv.md` |
+| Site title / tagline / socials / email | `_config.yml` |
+| Homepage hero + about text | `index.md` (`landing-title` + body) |
+| Projects (tiles + detail pages) | `_posts/YYYY-MM-DD-slug.md` — **tile order = post date, newest first** |
+| Project tile image | `image:` front matter (e.g. `assets/images/pic01.jpg`) |
 | Résumé PDF | `assets/pdf/David_Plehn_Resume.pdf` |
-| Social links + résumé link | `_data/socials.yml` |
-| Profile photo | `assets/img/prof_pic.jpg` |
-| Project images | `assets/img/projects/` (replace the placeholders) |
-| Homepage news items | `_news/*.md` |
+| Tile images / banner | `assets/images/` |
+
+### Add or reorder a project
+Create `_posts/YYYY-MM-DD-slug.md` with `layout: post`, `title`, `description` (tile caption), and `image`. Give it a **date** that places it where you want in the tile grid (later date = earlier tile). Keep `tiles-count` in `_config.yml` ≥ the number of projects.
 
 ## Local preview
-
-Requires Ruby + Bundler (and ImageMagick for responsive images):
 
 ```bash
 bundle install
 bundle exec jekyll serve   # http://localhost:4000
 ```
 
-If ImageMagick isn't installed, set `imagemagick.enabled: false` in `_config.yml` for local builds.
-A Docker path is also available via the upstream al-folio `Dockerfile` if preferred.
-
 ## Deployment
 
-GitHub Pages **cannot** build this site with its native builder — al-folio uses plugins
-(jekyll-scholar, jekyll-toc, etc.) that aren't on the GitHub Pages allow-list. Instead,
-`.github/workflows/deploy.yml` builds the site in CI (with the full Gemfile) and publishes the
-finished artifact straight to Pages via the official `actions/deploy-pages` flow — GitHub never
-re-builds the source.
+GitHub Pages' native builder can't run Jekyll 4.x, so `.github/workflows/deploy.yml` builds the site in CI and publishes it via the official `actions/deploy-pages` flow.
 
-**One-time setup:** in the repo's **Settings → Pages**, set *Source* to **GitHub Actions**
-(not "Deploy from a branch"). After that, every push to `main` rebuilds and redeploys automatically.
+**One-time setup:** Settings → Pages → Source → **GitHub Actions**. Then every push to `main` redeploys automatically.
 
-## To-do / asset gaps
+## To-do
+- Replace the stock tile images in `assets/images/` with real project screenshots/GIFs.
+- Add live-demo links (FinSight AI on Vercel, SceneCheck via Expo/TestFlight) as they come online.
 
-- Replace placeholder images in `assets/img/projects/` with real screenshots / GIFs.
-- Confirm the full author list for the publication in `_bibliography/papers.bib`.
-- (Optional) Embed the Time to Die WebGL build — see `_projects/5_time-to-die.md`.
+---
+Theme: *Forty* by HTML5 UP (CCA 3.0). Jekyll port by Andrew Banchich (MIT).

@@ -1,0 +1,27 @@
+---
+layout: post
+title: Time to Die
+description: "Browser-based WebGL arcade drone shooter with timed survival"
+image: assets/images/pic08.jpg
+---
+
+**Status:** Playable &nbsp;·&nbsp; **Category:** Games &nbsp;·&nbsp; 2026
+
+A fast-paced Unity WebGL arcade game where players destroy waves of drones against the clock while managing depleting health. Features real-time combat, leaderboard scoring, and instant browser play with no install. A complete, playable game loop.
+
+## Highlights
+
+- Fully playable WebGL game deployed in the browser
+- Real-time drone combat with health-decay survival mechanics
+- Leaderboard system for competitive time-based scoring
+- Cross-browser compatible with an intuitive control scheme
+- Complete game loop from core mechanics to playable build
+
+## Tech stack
+
+Unity · WebGL · C# · HTML5
+
+<ul class="actions">
+  <li><a href="https://github.com/Plehndm/Time-to-Die-Game" class="button" target="_blank" rel="noopener">View on GitHub</a></li>
+  <li><a href="/" class="button">Back to all projects</a></li>
+</ul>
