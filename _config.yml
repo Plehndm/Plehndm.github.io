@@ -24,6 +24,7 @@ socials:
 # build settings
 markdown: kramdown
 permalink: /projects/:title/
+future: true # build posts whose dates are in the future (project tile ordering uses future dates)
 
 sass:
   style: compressed
