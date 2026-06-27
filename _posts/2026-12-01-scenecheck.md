@@ -2,7 +2,7 @@
 layout: post
 title: SceneCheck
 description: "Cross-platform event discovery app pairing location-based search with social features"
-image: assets/images/projects/scenecheck.png
+image: assets/images/SceneCheck_Homepage.png
 ---
 
 **Status:** Active &nbsp;·&nbsp; **Category:** Full-Stack &nbsp;·&nbsp; 2026

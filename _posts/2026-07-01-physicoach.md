@@ -2,7 +2,7 @@
 layout: post
 title: PhysiCoach
 description: "Mobile fitness coaching and physical-therapy tracking app"
-image: assets/images/projects/physicoach.png
+image: assets/images/PhysiCoach_Project_App_StoryBoard.png
 ---
 
 **Status:** WIP &nbsp;·&nbsp; **Category:** Full-Stack &nbsp;·&nbsp; 2026
