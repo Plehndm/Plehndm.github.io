@@ -8,7 +8,7 @@
 
 	#banner {
 		@include vendor('align-items', 'center');
-		@include vendor('background-image', 'url("../images/banner.jpg")');
+		@include vendor('background-image', 'url("../images/snowy_mountian_header.jpg")');
 		@include vendor('display', 'flex');
 		@include padding(4em, 0, (2em, 0, 0, 0));
 		background-attachment: fixed;
@@ -33,7 +33,7 @@
 			display: block;
 			height: 100%;
 			left: 0;
-			opacity: 0.85;
+			opacity: 0.5;
 			position: absolute;
 			top: 0;
 			width: 100%;
@@ -42,6 +42,21 @@
 
 		h1 {
 			font-size: 3.25em;
+			text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+		}
+
+		.content p {
+			text-shadow: 0 1px 10px rgba(0,0,0,0.55);
+		}
+
+		.avatar {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 4px solid rgba(255,255,255,0.9);
+			box-shadow: 0 6px 22px rgba(0,0,0,0.4);
+			margin-bottom: 1.25em;
 		}
 
 		> .inner {
