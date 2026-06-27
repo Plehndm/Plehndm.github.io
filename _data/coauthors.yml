@@ -1,0 +1,6 @@
+# Maps co-author last names (lowercase) to display name variants + a link.
+# jekyll-scholar uses this to linkify and abbreviate co-author names in publications.
+# Add entries here as you add papers, e.g.:
+# "smith":
+#   - firstname: ["Jane", "J."]
+#     url: https://example.com/jane-smith
