@@ -4,36 +4,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal portfolio site (`Plehndm.github.io`) — a static **Jekyll** site built on the [al-folio](https://github.com/alshedivat/al-folio) theme (pinned to **v0.16.3**, the last "classic" release where `_layouts`/`_includes`/`_sass` live in-repo). It showcases David Plehn's software/AI projects, publications, and CV for SWE/AI internship recruiting.
+Personal portfolio site (`Plehndm.github.io`) — a static **Jekyll** site built on the **Forty** theme (HTML5 UP, Jekyll port by Andrew Banchich). It's an image-tile portfolio: the homepage is a grid of project tiles, each linking to a detail page. Emphasis is SWE / AI / data-science internship recruiting.
 
 ## Build & deploy
 
-GitHub Pages **cannot** build this site directly — al-folio depends on non-allow-listed plugins (`jekyll-scholar`, `jekyll-imagemagick`, etc., see the `Gemfile`). Instead:
+Forty needs Jekyll 4.x, which GitHub Pages' native builder won't run, so deployment uses the official **GitHub Actions → Pages** flow:
 
-- **CI build/deploy:** `.github/workflows/deploy.yml` builds with the full Gemfile and publishes the compiled `_site` straight to Pages via the official `actions/upload-pages-artifact` + `actions/deploy-pages` flow on every push to `main`. **Pages source must be set to "GitHub Actions"** (Settings → Pages → Source), NOT "Deploy from a branch" — the branch-based source makes GitHub's native (allow-listed, plugin-less) builder try to rebuild the source and fail on tags like `toc`. This is the only retained workflow — the other upstream al-folio CI workflows were removed to keep the Actions tab clean.
-- **Local preview** (needs Ruby + Bundler, and ImageMagick for responsive images):
-  ```bash
-  bundle install
-  bundle exec jekyll serve   # http://localhost:4000
-  ```
-  Set `imagemagick.enabled: false` in `_config.yml` if ImageMagick isn't available locally.
+- `.github/workflows/deploy.yml` runs `bundle exec jekyll build` and publishes `_site` via `actions/upload-pages-artifact` + `actions/deploy-pages` on every push to `main`. **Pages Source must be "GitHub Actions"** (Settings → Pages), not "Deploy from a branch".
+- Local preview: `bundle install` then `bundle exec jekyll serve` → http://localhost:4000.
 
 ## Content architecture
 
-al-folio is data/collection-driven; most edits are content files, not templates:
-
-- **`_config.yml`** — site identity (`first_name`/`last_name`), `url`/`baseurl`, `google_analytics` (`G-8YDS9ZPXM8`), `scholar.last_name`/`first_name` (controls author-name highlighting in publications), and feature flags. `enable_project_categories` is **false** so the projects grid is a single flat list sorted by `importance`. A `_config.yml` change requires restarting `jekyll serve`.
-- **`_pages/`** — top-level pages. Nav order is set by `nav_order`: about (home, `permalink: /`) → projects (2) → publications (3) → cv (4). `blog.md` is `nav: false` (dormant; no posts).
-- **`_projects/*.md`** — one file per project card + detail page. **Ordering is controlled by the `importance` front-matter field (lower = first).** Files are numbered `N_slug.md` to mirror that order. Card fields: `title`, `description`, `img`, `github`, optional `redirect` (external/internal link instead of a detail page — used by the research-paper card → `/publications/`).
-- **`_bibliography/papers.bib`** — BibTeX, rendered by jekyll-scholar onto `/publications/`. Entries with `selected={true}` also surface on the homepage.
-- **`_data/cv.yml`** — structured CV rendered by `_pages/cv.md` (layout `cv`). **Edit the YAML, not the page.**
-- **`_data/socials.yml`** — social links + `cv_pdf` (résumé download path).
-- **`_news/*.md`** — short homepage announcements (`inline: true`).
-- **`assets/`** — `img/prof_pic.jpg` (profile photo), `img/projects/` (project covers — currently placeholders to replace), `pdf/David_Plehn_Resume.pdf` (résumé).
+- **`_config.yml`** — site identity (`title`, `subtitle`, `description`, `email`, `url`, `baseurl: ""`), `socials` (only non-empty entries render in the footer), and tile settings: `tiles-source: posts` + `tiles-count`. `permalink: /projects/:title/` gives project pages clean `/projects/<slug>/` URLs.
+- **Projects are posts.** Each project is a file in **`_posts/YYYY-MM-DD-slug.md`** with front matter `title`, `description` (the tile caption), `image` (tile thumbnail, e.g. `assets/images/picNN.jpg`), and a body (status line, description, Highlights, Tech stack, action buttons). **Tile order = post date, newest first** — dates are assigned descending by importance (flagship = latest date), NOT by real chronology. To reorder, change the dates.
+- **`index.md`** (`layout: home`) — the landing page: `landing-title` is the hero heading; the body markdown renders in the "About" section. Hero subheading comes from `site.description`.
+- **`_includes/tiles.html`** — renders the tile grid from `site.posts` (because `tiles-source: posts`), using each post's `image`/`title`/`description`/`url`.
+- **`_includes/header.html` / `footer.html`** — nav and the contact/socials footer (customized: email + GitHub + LinkedIn, no contact form).
+- **`_layouts/`** — `home.html` (landing + tiles + About), `post.html` (project detail), `page.html`.
+- **`assets/`** — `images/` (Forty's `pic01..pic11.jpg` are used as project tile placeholders — replace with real screenshots), `css/main.scss` (compiles to main.css), `js/`, `fonts/`, `pdf/David_Plehn_Resume.pdf`.
 
 ### Conventions / gotchas
 
-- Project ordering = `importance`, NOT filename — but keep the `N_` filename prefix in sync for readability.
-- Adding a project: create `_projects/N_slug.md` with the front matter above; it appears automatically on `/projects/`.
-- Markdown is **kramdown** + **rouge**; image grids on project pages use the `{% include figure.liquid %}` helper (Bootstrap rows/cols).
-- Legacy Hux Blog scaffolding (its `_config.yml`, `_layouts/`) was fully removed during the al-folio migration.
+- Adding a project = add a `_posts/` file with a date that places it correctly in the tile order, plus an `image`. `tiles-count` in `_config.yml` must be ≥ the number of projects (currently 12 for 11 tiles).
+- The research-paper tile is a post with no GitHub repo (links out to the DOI) — not all tiles are repos.
+- Project tile images are stock placeholders today; swapping in real screenshots (`assets/images/`) is the biggest visual win.
+- This replaced an earlier al-folio build; all al-folio files (`_bibliography`, `_data`, `_pages`, `_projects`, `_sass`, etc.) were removed in the Forty migration.
