@@ -10,7 +10,7 @@ Personal portfolio site (`Plehndm.github.io`) — a static **Jekyll** site built
 
 GitHub Pages **cannot** build this site directly — al-folio depends on non-allow-listed plugins (`jekyll-scholar`, `jekyll-imagemagick`, etc., see the `Gemfile`). Instead:
 
-- **CI build/deploy:** `.github/workflows/deploy.yml` builds with the full Gemfile and publishes the compiled `_site` to the **`gh-pages`** branch on every push to `main`. Pages must be configured to serve from the `gh-pages` branch (Settings → Pages → Deploy from a branch). This is the only retained workflow — the other upstream al-folio CI workflows were removed to keep the Actions tab clean.
+- **CI build/deploy:** `.github/workflows/deploy.yml` builds with the full Gemfile and publishes the compiled `_site` straight to Pages via the official `actions/upload-pages-artifact` + `actions/deploy-pages` flow on every push to `main`. **Pages source must be set to "GitHub Actions"** (Settings → Pages → Source), NOT "Deploy from a branch" — the branch-based source makes GitHub's native (allow-listed, plugin-less) builder try to rebuild the source and fail on tags like `toc`. This is the only retained workflow — the other upstream al-folio CI workflows were removed to keep the Actions tab clean.
 - **Local preview** (needs Ruby + Bundler, and ImageMagick for responsive images):
   ```bash
   bundle install

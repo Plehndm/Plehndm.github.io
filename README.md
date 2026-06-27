@@ -33,12 +33,14 @@ A Docker path is also available via the upstream al-folio `Dockerfile` if prefer
 
 ## Deployment
 
-GitHub Pages **cannot** build this site directly — al-folio uses plugins (jekyll-scholar, etc.)
-that aren't on the GitHub Pages allow-list. Instead, `.github/workflows/deploy.yml` builds the
-site in CI and publishes the compiled output to the **`gh-pages`** branch.
+GitHub Pages **cannot** build this site with its native builder — al-folio uses plugins
+(jekyll-scholar, jekyll-toc, etc.) that aren't on the GitHub Pages allow-list. Instead,
+`.github/workflows/deploy.yml` builds the site in CI (with the full Gemfile) and publishes the
+finished artifact straight to Pages via the official `actions/deploy-pages` flow — GitHub never
+re-builds the source.
 
-**One-time setup:** in the repo's **Settings → Pages**, set *Source* to **Deploy from a branch → `gh-pages` / root**.
-After that, every push to `main` rebuilds and redeploys automatically.
+**One-time setup:** in the repo's **Settings → Pages**, set *Source* to **GitHub Actions**
+(not "Deploy from a branch"). After that, every push to `main` rebuilds and redeploys automatically.
 
 ## To-do / asset gaps
 
