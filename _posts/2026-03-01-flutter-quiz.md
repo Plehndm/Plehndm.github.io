@@ -2,7 +2,7 @@
 layout: post
 title: Flutter Quiz App
 description: "Cross-platform quiz app with instant scoring"
-image: assets/images/projects/flutter-quiz.png
+image: assets/images/projects/flutter-quiz-screenshot.png
 ---
 
 **Status:** Complete &nbsp;·&nbsp; **Category:** Full-Stack &nbsp;·&nbsp; 2026
