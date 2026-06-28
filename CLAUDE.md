@@ -21,7 +21,7 @@ Forty needs Jekyll 4.x, which GitHub Pages' native builder won't run, so deploym
 - **`_includes/tiles.html`** — renders the tile grid from `site.posts` (because `tiles-source: posts`), using each post's `image`/`title`/`description`/`url`.
 - **`_includes/header.html` / `footer.html`** — nav and the contact/socials footer (customized: email + GitHub + LinkedIn, no contact form).
 - **`_layouts/`** — `home.html` (landing + tiles + About), `post.html` (project detail), `page.html`.
-- **`assets/`** — `images/` (Forty's `pic01..pic11.jpg` are used as project tile placeholders — replace with real screenshots), `css/main.scss` (compiles to main.css), `js/`, `fonts/`, `pdf/David_Plehn_Resume.pdf`.
+- **`assets/`** — `images/` (mostly real project screenshots/photos, with a couple of Forty stock placeholders — `pic02.jpg`/`pic03.jpg` — for the projects without a screenshot yet), `css/main.scss` (compiles to main.css), `js/`, `fonts/`, `pdf/David_Plehn_Resume.pdf`.
 
 ### Conventions / gotchas
 
