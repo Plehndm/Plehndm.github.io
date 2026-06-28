@@ -5,6 +5,8 @@ Built with [Jekyll](https://jekyllrb.com/) and the **Forty** theme ([HTML5 UP](h
 
 Live: https://plehndm.github.io
 
+![Homepage of David Plehn's portfolio](assets/images/homepage-preview.png)
+
 ## Editing content
 
 | What | Where |
