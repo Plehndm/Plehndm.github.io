@@ -20,7 +20,11 @@
                 <h1>{{ page.landing-title }}</h1>
             </header>
             <div class="content">
-                <p>{{ site.description }}</p>
+                {{ content }}
+                <ul class="actions">
+                    <li><a href="https://github.com/Plehndm" class="button" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="#contact" class="button scrolly">Get in touch</a></li>
+                </ul>
                 <ul class="actions">
                     <li><a href="#one" class="button next scrolly">View Projects</a></li>
                     <li><a href="{{ '/assets/pdf/David_Plehn_Resume.pdf' | relative_url }}" class="button" target="_blank" rel="noopener">Résumé</a></li>
@@ -79,20 +83,6 @@
             </div>
         </div>
         {% include tiles.html %}
-
-        <!-- Two -->
-        <section id="two">
-            <div class="inner">
-                <header class="major">
-                    <h2>About</h2>
-                </header>
-                {{ content }}
-                <ul class="actions">
-                    <li><a href="https://github.com/Plehndm" class="button next" target="_blank" rel="noopener">GitHub</a></li>
-                    <li><a href="#contact" class="button scrolly">Get in touch</a></li>
-                </ul>
-            </div>
-        </section>
 
     </div>
 
