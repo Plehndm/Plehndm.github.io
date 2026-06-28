@@ -268,3 +268,41 @@
 			}
 		}
 	}
+
+/* ----------------------------------------------------------------------------
+   Banner doubles as the About section (bio + grouped buttons)
+---------------------------------------------------------------------------- */
+
+	#banner.major {
+		height: auto;
+		min-height: 60vh;
+		max-height: none;
+	}
+
+	#banner .content {
+		display: block;
+
+		// undo Forty's horizontal "tagline" treatment
+		> * { margin-left: 0; }
+
+		p {
+			font-size: 1em;
+			font-weight: _font(weight);
+			letter-spacing: normal;
+			text-transform: none;
+			max-width: 42em;
+			margin-bottom: 1em;
+		}
+
+		// two grouped button rows with separation between buttons + rows
+		.actions {
+			@include vendor('display', 'flex');
+			@include vendor('flex-wrap', 'wrap');
+			margin: 0.75em 0 0 0;
+
+			li {
+				padding: 0;
+				margin: 0.45em 0.85em 0.45em 0;
+			}
+		}
+	}
