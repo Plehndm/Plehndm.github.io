@@ -8,6 +8,10 @@
 <header id="header"{% if page.layout == "landing" %} class="alt style2"{% endif %}{% if page.layout == "home" %} class="alt"{% endif %}>
 	<a href="{{ "" | absolute_url }}/" class="logo"><strong>{{ site.title }}</strong> <span>{{ site.subtitle }}</span></a>
 	<nav>
+		<a href="{{ '/' | relative_url }}" class="tab">Home</a>
+		<a href="{{ '/projects/' | relative_url }}" class="tab">Projects</a>
+		<a href="{{ '/#publications' | relative_url }}" class="tab">Publications</a>
+		<a href="{{ '/#contact' | relative_url }}" class="tab">Contact</a>
 		<a href="#menu">Menu</a>
 	</nav>
 </header>
