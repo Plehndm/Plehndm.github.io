@@ -96,10 +96,15 @@
 
 			h3 {
 				margin: 0 0 0.7em 0;
+				width: auto;
 				font-size: 1.2em;
 				font-weight: _font(weight-bold);
 				letter-spacing: -0.015em;
 				line-height: 1.25;
+				text-transform: none;
+
+				// remove Forty's auto underline bar under header.major's first child
+				&:after { display: none !important; }
 
 				a.link {
 					color: _palette(fg);
@@ -112,6 +117,9 @@
 			p {
 				color: rgba(214, 219, 240, 0.6);
 				font-size: 0.9em;
+				font-weight: _font(weight);
+				letter-spacing: 0;
+				text-transform: none;
 				line-height: 1.6;
 				display: -webkit-box;
 				-webkit-line-clamp: 4;
