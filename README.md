@@ -12,7 +12,7 @@ Live: https://plehndm.github.io
 | Site title / tagline / socials / email | `_config.yml` |
 | Homepage hero + about text | `index.md` (`landing-title` + body) |
 | Projects (tiles + detail pages) | `_posts/YYYY-MM-DD-slug.md` — **tile order = post date, newest first** |
-| Project tile image | `image:` front matter (e.g. `assets/images/pic01.jpg`) |
+| Project tile image | `image:` front matter (e.g. `assets/images/SceneCheck_Homepage.png`) |
 | Résumé PDF | `assets/pdf/David_Plehn_Resume.pdf` |
 | Tile images / banner | `assets/images/` |
 
