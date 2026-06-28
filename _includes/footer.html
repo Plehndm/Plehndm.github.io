@@ -79,8 +79,9 @@
 		(function () {
 			var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 			var el = document.getElementById('vanta-bg');
-			if (!el || reduceMotion || !window.VANTA) return;
 			var effect = "{{ page.bg-effect | default: 'globe' }}";
+			document.body.classList.add('bg-' + effect); // drives the per-effect dimming scrim
+			if (!el || reduceMotion || !window.VANTA) return;
 			try {
 				if (effect === 'net' && window.VANTA.NET) {
 					window._vantaEffect = window.VANTA.NET({
