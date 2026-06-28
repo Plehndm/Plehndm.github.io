@@ -1,0 +1,61 @@
+///
+/// Dynamic globe background + interactive polish (overrides Forty defaults)
+///
+
+/* Fixed WebGL globe background (Vanta) sits behind everything */
+	#vanta-bg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: -1;
+	}
+
+	html {
+		background: _palette(bg); // solid dark fallback if WebGL/JS is unavailable
+	}
+
+	body {
+		background: transparent;
+	}
+
+/* Let the globe glow through content while keeping text readable */
+	#main {
+		background-color: rgba(_palette(bg-alt), 0.72);
+	}
+
+	#contact {
+		background-color: rgba(_palette(bg), 0.72);
+	}
+
+	#footer {
+		background-color: rgba(24, 28, 48, 0.85);
+	}
+
+/* Glassy translucent top nav */
+	#header {
+		background-color: rgba(_palette(bg), 0.6);
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
+	}
+
+/* Interactive polish: lift + cyan glow on hover */
+	.tiles article {
+		@include vendor('transition', (
+			'transform 0.25s ease',
+			'box-shadow 0.25s ease',
+			'opacity 0.25s ease'
+		));
+
+		&:hover {
+			@include vendor('transform', 'translateY(-5px)');
+			box-shadow: 0 14px 34px rgba(0,0,0,0.5), 0 0 24px rgba(155,241,255,0.28);
+		}
+	}
+
+	.button {
+		&:hover {
+			box-shadow: 0 0 20px rgba(155,241,255,0.45);
+		}
+	}
