@@ -327,3 +327,9 @@
 			color: _palette(highlight);
 		}
 	}
+
+	// Forty strips the top border off the first menu item; restore it so the
+	// Home button keeps all four sides.
+	#menu .inner ul.links li:first-child a {
+		border-top: 1px solid rgba(155, 241, 255, 0.5) !important;
+	}
