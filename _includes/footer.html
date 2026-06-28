@@ -71,29 +71,49 @@
 	<!--[if lte IE 8]><script src="{{ "assets/js/ie/respond.min.js" | absolute_url }}"></script><![endif]-->
 	<script src="{{ "assets/js/main.js" | absolute_url }}"></script>
 
-	<!-- Animated background: Vanta GLOBE (three.js) -->
+<!-- Animated background: Vanta (three.js) — per-page via front-matter bg-effect -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
 	<script>
 		(function () {
 			var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 			var el = document.getElementById('vanta-bg');
-			if (!el || reduceMotion || !window.VANTA || !window.VANTA.GLOBE) return;
+			if (!el || reduceMotion || !window.VANTA) return;
+			var effect = "{{ page.bg-effect | default: 'globe' }}";
 			try {
-				window._vantaEffect = window.VANTA.GLOBE({
-					el: el,
-					mouseControls: true,
-					touchControls: true,
-					gyroControls: false,
-					minHeight: 200.0,
-					minWidth: 200.0,
-					scale: 1.0,
-					scaleMobile: 1.0,
-					backgroundColor: 0x242943, // matches theme palette bg
-					color: 0x9bf1ff,           // theme highlight
-					color2: 0x8d82c4,          // theme accent2
-					size: 1.0
-				});
+				if (effect === 'net' && window.VANTA.NET) {
+					window._vantaEffect = window.VANTA.NET({
+						el: el,
+						mouseControls: true,
+						touchControls: true,
+						gyroControls: false,
+						minHeight: 200.0,
+						minWidth: 200.0,
+						scale: 1.0,
+						scaleMobile: 1.0,
+						backgroundColor: 0x242943, // matches theme palette bg
+						color: 0x9bf1ff,           // theme highlight
+						points: 12.0,
+						maxDistance: 22.0,
+						spacing: 16.0
+					});
+				} else if (window.VANTA.GLOBE) {
+					window._vantaEffect = window.VANTA.GLOBE({
+						el: el,
+						mouseControls: true,
+						touchControls: true,
+						gyroControls: false,
+						minHeight: 200.0,
+						minWidth: 200.0,
+						scale: 1.0,
+						scaleMobile: 1.0,
+						backgroundColor: 0x242943, // matches theme palette bg
+						color: 0x9bf1ff,           // theme highlight
+						color2: 0x8d82c4,          // theme accent2
+						size: 1.0
+					});
+				}
 			} catch (e) { /* WebGL unsupported -> static dark fallback */ }
 		})();
 	</script>
