@@ -2,7 +2,7 @@
 layout: page
 title: Projects
 permalink: /projects/
-nav-menu: true
+nav-menu: false
 bg-effect: net
 ---
 
