@@ -26,6 +26,14 @@ markdown: kramdown
 permalink: /projects/:title/
 future: true # build posts whose dates are in the future (project tile ordering uses future dates)
 
+# Project detail pages (posts) use the NET ("neurons") animated background
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      bg-effect: net
+
 sass:
   style: compressed
 
