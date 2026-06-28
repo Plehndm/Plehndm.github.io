@@ -2,7 +2,7 @@
 layout: post
 title: Time to Die
 description: "Browser-based WebGL arcade drone shooter with timed survival"
-image: assets/images/pic08.jpg
+image: assets/images/projects/ttd-screenshot.png
 ---
 
 **Status:** Playable &nbsp;·&nbsp; **Category:** Games &nbsp;·&nbsp; 2026

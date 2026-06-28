@@ -173,3 +173,57 @@
 			}
 		}
 	}
+
+/* ----------------------------------------------------------------------------
+   Project detail-page images: framed like a screenshot in an app window
+---------------------------------------------------------------------------- */
+
+	.image.main {
+		display: block;
+		position: relative;
+		max-width: 880px;
+		margin: 2.5em auto 1em auto;
+		padding-top: 2.2em;            // room for the faux title bar
+		border-radius: 12px;
+		overflow: hidden;
+		background: #0b0d16;
+		border: 1px solid rgba(155, 241, 255, 0.22);
+		box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 40px rgba(155, 241, 255, 0.12);
+		@include vendor('transition', 'box-shadow 0.35s ease, border-color 0.35s ease');
+
+		// title bar
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0; left: 0; right: 0;
+			height: 2.2em;
+			background: #11131f;
+			border-bottom: 1px solid rgba(155, 241, 255, 0.14);
+		}
+
+		// macOS-style traffic-light dots
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0.82em; left: 1em;
+			width: 0.62em; height: 0.62em;
+			border-radius: 50%;
+			background: #ff5f56;
+			box-shadow: 1.15em 0 0 #ffbd2e, 2.30em 0 0 #27c93f;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			margin: 0;
+			@include vendor('transition', 'transform 0.45s ease');
+		}
+
+		&:hover {
+			border-color: rgba(155, 241, 255, 0.5);
+			box-shadow: 0 36px 80px rgba(0, 0, 0, 0.65), 0 0 50px rgba(155, 241, 255, 0.22);
+
+			img { @include vendor('transform', 'scale(1.03)'); }
+		}
+	}
