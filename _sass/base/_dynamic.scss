@@ -82,6 +82,7 @@
 	.tiles article {
 		position: relative;
 		flex: 0 1 21em;
+		flex-grow: 0 !important; // override Forty's :nth-child(4n-1/4n-2) flex:1 auto so cubes never stretch (e.g. a lone last card stays 21em + centered)
 		width: 21em !important;
 		min-width: 0 !important;
 		min-height: 0 !important;
