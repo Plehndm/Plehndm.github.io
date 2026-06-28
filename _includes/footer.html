@@ -70,3 +70,30 @@
 	<script src="{{ "assets/js/util.js" | absolute_url }}"></script>
 	<!--[if lte IE 8]><script src="{{ "assets/js/ie/respond.min.js" | absolute_url }}"></script><![endif]-->
 	<script src="{{ "assets/js/main.js" | absolute_url }}"></script>
+
+	<!-- Animated background: Vanta GLOBE (three.js) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
+	<script>
+		(function () {
+			var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			var el = document.getElementById('vanta-bg');
+			if (!el || reduceMotion || !window.VANTA || !window.VANTA.GLOBE) return;
+			try {
+				window._vantaEffect = window.VANTA.GLOBE({
+					el: el,
+					mouseControls: true,
+					touchControls: true,
+					gyroControls: false,
+					minHeight: 200.0,
+					minWidth: 200.0,
+					scale: 1.0,
+					scaleMobile: 1.0,
+					backgroundColor: 0x242943, // matches theme palette bg
+					color: 0x9bf1ff,           // theme highlight
+					color2: 0x8d82c4,          // theme accent2
+					size: 1.0
+				});
+			} catch (e) { /* WebGL unsupported -> static dark fallback */ }
+		})();
+	</script>
