@@ -21,7 +21,8 @@
 	}
 
 /* Let the globe glow through content while keeping text readable */
-	#main {
+	#main,
+	#main.alt {
 		background-color: rgba(_palette(bg-alt), 0.72);
 	}
 
