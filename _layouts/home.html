@@ -23,7 +23,7 @@
                 {{ content }}
                 <ul class="actions">
                     <li><a href="https://github.com/Plehndm" class="button" target="_blank" rel="noopener">GitHub</a></li>
-                    <li><a href="#one" class="button next scrolly">View Projects</a></li>
+                    <li><a href="{{ '/projects/' | relative_url }}" class="button next">View Projects</a></li>
                 </ul>
             </div>
         </div>
@@ -69,16 +69,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- One (Projects) -->
-        <div class="section-heading">
-            <div class="inner">
-                <header class="major">
-                    <h2>Projects</h2>
-                </header>
-            </div>
-        </div>
-        {% include tiles.html %}
 
     </div>
 

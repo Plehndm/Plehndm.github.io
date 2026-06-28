@@ -47,56 +47,144 @@
 	}
 
 /* ----------------------------------------------------------------------------
-   Project tiles -> floating black "cubes" (text only, no images)
+   Project tiles -> stylized "tech glass" cards (text only, no images)
+   Replaces the previous .tiles cube styling. Reads well over the moving
+   Vanta NET (neurons) background; on-brand cyan (#9bf1ff) accents.
 ---------------------------------------------------------------------------- */
 
+	// gentle vertical float (uses the individual `translate` property so the
+	// hover `transform` lift can compose with it without conflicting)
 	@keyframes cube-float {
-		0%, 100% { -webkit-transform: translateY(0); transform: translateY(0); }
-		50%      { -webkit-transform: translateY(-12px); transform: translateY(-12px); }
+		0%, 100% { translate: 0 0; }
+		50%      { translate: 0 -12px; }
+	}
+
+	// a soft light sweeps across the glowing cyan top edge
+	@keyframes edge-shimmer {
+		0%   { background-position: -150% 0; }
+		100% { background-position:  250% 0; }
 	}
 
 	.tiles {
 		@include vendor('display', 'flex');
 		@include vendor('flex-wrap', 'wrap');
 		@include vendor('justify-content', 'center');
-		gap: 2.25em;
-		padding: 1em 1.5em 4em 1.5em;
+		@include vendor('align-items', 'stretch');
+		gap: 2em;
+		padding: 1.5em 1.5em 4.5em 1.5em;
+		max-width: 72em;
+		margin: 0 auto;
 		background: transparent !important;
+		counter-reset: tile; // drives the monospace index marker
 	}
 
 	.tiles article {
-		// shape + look
-		width: 19em !important;
-		height: 15em !important;
-		min-height: 0 !important;
+		// shape + footprint: ~3 per row on wide screens
+		position: relative;
+		flex: 0 1 20em;
+		width: 20em !important;
+		min-width: 0 !important;
+		min-height: 15em !important;
+		height: auto !important;
 		max-height: none !important;
 		margin: 0 !important;
-		padding: 2em !important;
-		flex: 0 0 auto !important;
+		padding: 2.1em 2em 2em 2em !important;
+		@include vendor('display', 'flex');
+		@include vendor('align-items', 'center');
 		overflow: hidden;
-		border-radius: 12px;
+		border-radius: 14px;
+		isolation: isolate;
+
+		// deep near-black glass with a subtle cool gradient
 		background-color: #05060a !important;
-		background-image: none !important; // kill the JS-set tile image
+		background-image:
+			linear-gradient(160deg, rgba(155, 241, 255, 0.07) 0%, rgba(141, 130, 196, 0.05) 38%, rgba(5, 6, 10, 0) 70%),
+			linear-gradient(180deg, #0a0d18 0%, #05060a 100%) !important;
 		border: 1px solid rgba(155, 241, 255, 0.16);
-		box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
-		// gentle float
+		box-shadow:
+			0 20px 45px rgba(0, 0, 0, 0.55),
+			inset 0 1px 0 rgba(155, 241, 255, 0.06);
+		-webkit-backdrop-filter: blur(6px);
+		backdrop-filter: blur(6px);
+
+		// gentle float, staggered below
 		animation: cube-float 6s ease-in-out infinite;
 		@include vendor('transition', (
-			'box-shadow 0.3s ease',
-			'border-color 0.3s ease'
+			'transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1)',
+			'box-shadow 0.35s ease',
+			'border-color 0.35s ease'
 		));
 
-		// strip Forty's color overlays
-		&:before, &:after { display: none !important; }
+		// glowing / animated cyan accent edge along the top
+		&:before {
+			content: '' !important;
+			display: block !important;
+			position: absolute;
+			top: 0; left: 0; right: 0;
+			height: 2px;
+			background-image: linear-gradient(
+				90deg,
+				rgba(155, 241, 255, 0) 0%,
+				rgba(155, 241, 255, 0.9) 35%,
+				#ffffff 50%,
+				rgba(141, 130, 196, 0.9) 65%,
+				rgba(155, 241, 255, 0) 100%
+			);
+			background-size: 200% 100%;
+			animation: edge-shimmer 5s linear infinite;
+			box-shadow: 0 0 12px rgba(155, 241, 255, 0.55);
+			pointer-events: none;
+			z-index: 3;
+		}
+
+		// faint radial accent glow in the corner, behind the text
+		&:after {
+			content: '' !important;
+			display: block !important;
+			position: absolute;
+			top: -40%; right: -30%;
+			width: 16em; height: 16em;
+			background: radial-gradient(circle, rgba(111, 195, 223, 0.16) 0%, rgba(111, 195, 223, 0) 70%);
+			pointer-events: none;
+			z-index: 0;
+		}
 
 		header.major {
+			position: relative;
+			z-index: 2;
 			width: 100%;
-			text-align: center;
+			text-align: left;
+			counter-increment: tile;
 
-			h3 { margin-bottom: 0.5em; }
+			// small monospace index marker (e.g. // 01)
+			&:before {
+				content: '// ' counter(tile, decimal-leading-zero);
+				display: block;
+				font-family: 'SFMono-Regular', 'Roboto Mono', 'Consolas', 'Menlo', monospace;
+				font-size: 0.62em;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: rgba(155, 241, 255, 0.65);
+				margin-bottom: 0.85em;
+			}
+
+			h3 {
+				margin-bottom: 0.6em;
+				font-size: 1.18em;
+				letter-spacing: -0.005em;
+				line-height: 1.3;
+
+				a.link {
+					color: _palette(fg);
+					border-bottom: none !important;
+					@include vendor('transition', 'color 0.3s ease');
+				}
+			}
 
 			p {
-				color: _palette(fg);
+				color: rgba(255, 255, 255, 0.62);
+				font-size: 0.92em;
+				line-height: 1.6;
 				display: -webkit-box;
 				-webkit-line-clamp: 5;
 				-webkit-box-orient: vertical;
@@ -105,10 +193,23 @@
 			}
 		}
 
-		// hover: brighten + glow (transform is owned by the float animation)
+		// satisfying hover: extra lift (composes with float), brighter edge + glow.
+		// `transform` is free because the float uses the `translate` property.
 		&:hover {
-			border-color: rgba(155, 241, 255, 0.55);
-			box-shadow: 0 28px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(155, 241, 255, 0.35);
+			@include vendor('transform', 'translateY(-10px) scale(1.015)');
+			border-color: rgba(155, 241, 255, 0.6);
+			box-shadow:
+				0 30px 65px rgba(0, 0, 0, 0.62),
+				0 0 34px rgba(155, 241, 255, 0.32),
+				inset 0 1px 0 rgba(155, 241, 255, 0.12);
+
+			header.major {
+				&:before { color: _palette(highlight); }
+				h3 a.link { color: _palette(highlight); }
+				p { color: rgba(255, 255, 255, 0.78); }
+			}
+
+			&:before { box-shadow: 0 0 18px rgba(155, 241, 255, 0.85); }
 		}
 
 		// stagger the float so they don't bob in unison
@@ -116,9 +217,26 @@
 		&:nth-child(3n + 3) { animation-delay: 1.6s; }
 	}
 
+	// responsive: ~3 per row -> 2 per row -> 1 per row
+	@media screen and (max-width: 980px) {
+		.tiles article { flex-basis: 45%; width: 22em !important; }
+	}
+
+	@media screen and (max-width: 640px) {
+		.tiles { gap: 1.5em; }
+		.tiles article {
+			flex-basis: 100%;
+			width: 100% !important;
+			max-width: 22em;
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		.tiles article { animation: none; }
+		.tiles article:before { animation: none; }
+		.tiles article:hover { @include vendor('transform', 'none'); }
 	}
+
 
 /* ----------------------------------------------------------------------------
    "What I'm doing now" section
