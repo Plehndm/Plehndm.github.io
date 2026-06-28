@@ -2,7 +2,7 @@
 layout: post
 title: Dice Roller App
 description: "Flutter virtual dice roller built to learn mobile fundamentals"
-image: assets/images/projects/dice-roller.png
+image: assets/images/projects/dice-roller-screenshot.png
 ---
 
 **Status:** Complete &nbsp;·&nbsp; **Category:** Games &nbsp;·&nbsp; 2024
