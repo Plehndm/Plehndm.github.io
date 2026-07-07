@@ -43,6 +43,7 @@
       <span class="footer-prompt">$</span> echo "&copy; {{ site.time | date: '%Y' }} {{ site.title }} · {{ site.subtitle }}"
     </p>
     <ul class="footer-links">
+      <li><a href="mailto:{{ site.email }}" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg></a></li>
       {% for social in site.data.socials %}
       <li><a href="{{ social.url }}" target="_blank" rel="noopener" aria-label="{{ social.name }}"><svg class="icon" aria-hidden="true"><use href="#icon-{{ social.icon }}"/></svg></a></li>
       {% endfor %}
