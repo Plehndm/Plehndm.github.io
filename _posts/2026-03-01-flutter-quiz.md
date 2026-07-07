@@ -8,7 +8,7 @@ image_fit: contain
 image_position: center
 status: Complete
 category: Full-Stack
-year: 2026
+year: 2024
 repo: https://github.com/Plehndm/Flutter-Quiz-App
 tags:
   - Flutter
