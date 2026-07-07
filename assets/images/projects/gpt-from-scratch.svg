@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'IBM Plex Mono', Consolas, monospace">
+  <rect width="800" height="500" fill="#0d1225"/>
+
+  <!-- header -->
+  <text x="60" y="58" fill="#6ee7ff" font-size="17" font-weight="600">GPT&#160;FROM&#160;SCRATCH</text>
+  <text x="60" y="82" fill="#6a7694" font-size="12">// transformer internals, built by hand</text>
+
+  <!-- causal attention heatmap (lower triangle = visible, upper = masked) -->
+  <text x="60" y="122" fill="#93a0c0" font-size="11">causal self-attention · softmax(QK&#8319;/&#8730;d)V</text>
+  <g>
+    <rect x="60"  y="136" width="30" height="30" fill="#6ee7ff" opacity="0.85"/>
+    <rect x="94"  y="136" width="30" height="30" fill="#131a30"/>
+    <rect x="128" y="136" width="30" height="30" fill="#131a30"/>
+    <rect x="162" y="136" width="30" height="30" fill="#131a30"/>
+    <rect x="196" y="136" width="30" height="30" fill="#131a30"/>
+    <rect x="230" y="136" width="30" height="30" fill="#131a30"/>
+
+    <rect x="60"  y="170" width="30" height="30" fill="#6ee7ff" opacity="0.35"/>
+    <rect x="94"  y="170" width="30" height="30" fill="#6ee7ff" opacity="0.7"/>
+    <rect x="128" y="170" width="30" height="30" fill="#131a30"/>
+    <rect x="162" y="170" width="30" height="30" fill="#131a30"/>
+    <rect x="196" y="170" width="30" height="30" fill="#131a30"/>
+    <rect x="230" y="170" width="30" height="30" fill="#131a30"/>
+
+    <rect x="60"  y="204" width="30" height="30" fill="#6ee7ff" opacity="0.15"/>
+    <rect x="94"  y="204" width="30" height="30" fill="#6ee7ff" opacity="0.5"/>
+    <rect x="128" y="204" width="30" height="30" fill="#6ee7ff" opacity="0.75"/>
+    <rect x="162" y="204" width="30" height="30" fill="#131a30"/>
+    <rect x="196" y="204" width="30" height="30" fill="#131a30"/>
+    <rect x="230" y="204" width="30" height="30" fill="#131a30"/>
+
+    <rect x="60"  y="238" width="30" height="30" fill="#6ee7ff" opacity="0.25"/>
+    <rect x="94"  y="238" width="30" height="30" fill="#6ee7ff" opacity="0.15"/>
+    <rect x="128" y="238" width="30" height="30" fill="#6ee7ff" opacity="0.45"/>
+    <rect x="162" y="238" width="30" height="30" fill="#6ee7ff" opacity="0.8"/>
+    <rect x="196" y="238" width="30" height="30" fill="#131a30"/>
+    <rect x="230" y="238" width="30" height="30" fill="#131a30"/>
+
+    <rect x="60"  y="272" width="30" height="30" fill="#6ee7ff" opacity="0.1"/>
+    <rect x="94"  y="272" width="30" height="30" fill="#6ee7ff" opacity="0.3"/>
+    <rect x="128" y="272" width="30" height="30" fill="#6ee7ff" opacity="0.2"/>
+    <rect x="162" y="272" width="30" height="30" fill="#6ee7ff" opacity="0.55"/>
+    <rect x="196" y="272" width="30" height="30" fill="#6ee7ff" opacity="0.85"/>
+    <rect x="230" y="272" width="30" height="30" fill="#131a30"/>
+
+    <rect x="60"  y="306" width="30" height="30" fill="#6ee7ff" opacity="0.2"/>
+    <rect x="94"  y="306" width="30" height="30" fill="#6ee7ff" opacity="0.1"/>
+    <rect x="128" y="306" width="30" height="30" fill="#6ee7ff" opacity="0.35"/>
+    <rect x="162" y="306" width="30" height="30" fill="#6ee7ff" opacity="0.25"/>
+    <rect x="196" y="306" width="30" height="30" fill="#6ee7ff" opacity="0.5"/>
+    <rect x="230" y="306" width="30" height="30" fill="#6ee7ff" opacity="0.9"/>
+  </g>
+  <text x="60" y="358" fill="#6a7694" font-size="11">masked&#160;&#9633;&#160;future tokens</text>
+
+  <!-- architecture stack -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="480" y="118" width="220" height="40" rx="6" fill="#131a30" stroke="#35456e"/>
+    <text x="590" y="143" fill="#93a0c0">token + positional embed</text>
+
+    <rect x="480" y="176" width="220" height="40" rx="6" fill="#131a30" stroke="#6ee7ff"/>
+    <text x="590" y="201" fill="#6ee7ff">multi-head attention</text>
+
+    <rect x="480" y="234" width="220" height="40" rx="6" fill="#131a30" stroke="#a99be8"/>
+    <text x="590" y="259" fill="#a99be8">feed-forward + norm</text>
+
+    <rect x="480" y="292" width="220" height="40" rx="6" fill="#131a30" stroke="#35456e"/>
+    <text x="590" y="317" fill="#93a0c0">logits &#8594; next token</text>
+  </g>
+  <g stroke="#35456e" stroke-width="1.6">
+    <line x1="590" y1="158" x2="590" y2="176"/>
+    <line x1="590" y1="216" x2="590" y2="234"/>
+    <line x1="590" y1="274" x2="590" y2="292"/>
+  </g>
+  <text x="716" y="232" fill="#6a7694" font-size="11">&#215;N</text>
+  <path d="M712 196 C 740 196, 740 259, 712 259" fill="none" stroke="#6a7694" stroke-width="1.2"/>
+
+  <!-- token stream with BPE -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="60"  y="396" width="86" height="34" rx="5" fill="#131a30" stroke="#35456e"/><text x="103" y="418" fill="#93a0c0">the</text>
+    <rect x="156" y="396" width="86" height="34" rx="5" fill="#131a30" stroke="#35456e"/><text x="199" y="418" fill="#93a0c0">model</text>
+    <rect x="252" y="396" width="86" height="34" rx="5" fill="#131a30" stroke="#35456e"/><text x="295" y="418" fill="#93a0c0">pred</text>
+    <rect x="348" y="396" width="86" height="34" rx="5" fill="#131a30" stroke="#35456e"/><text x="391" y="418" fill="#93a0c0">##icts</text>
+    <rect x="444" y="396" width="86" height="34" rx="5" fill="#131a30" stroke="#35456e"/><text x="487" y="418" fill="#93a0c0">the</text>
+    <rect x="540" y="396" width="86" height="34" rx="5" fill="#0d1225" stroke="#6ee7ff" stroke-dasharray="4 3"/><text x="583" y="418" fill="#6ee7ff">next?</text>
+  </g>
+  <!-- attention arcs into the predicted token -->
+  <g fill="none" stroke="#6ee7ff">
+    <path d="M103 396 C 200 320, 480 320, 578 396" stroke-width="1"   opacity="0.25"/>
+    <path d="M199 396 C 280 334, 480 334, 580 396" stroke-width="1.4" opacity="0.4"/>
+    <path d="M295 396 C 360 348, 500 348, 582 396" stroke-width="2"   opacity="0.6"/>
+    <path d="M391 396 C 440 360, 520 360, 583 396" stroke-width="2.6" opacity="0.8"/>
+    <path d="M487 396 C 515 372, 550 372, 583 396" stroke-width="1.6" opacity="0.5"/>
+  </g>
+  <text x="60" y="462" fill="#6a7694" font-size="11">BPE tokenizer · PyTorch DDP · trained on NVIDIA GPUs</text>
+</svg>

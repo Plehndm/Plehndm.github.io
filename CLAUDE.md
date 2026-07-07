@@ -18,15 +18,16 @@ Jekyll 4.x, which GitHub Pages' native builder won't run, so deployment uses the
 - **`_config.yml`** — site identity (`title`, `subtitle`, `description`, `email`, `url`), plus `resume`, `repo_url`, `og_image`, `github_username`. `permalink: /projects/:title/` gives project pages `/projects/<slug>/` URLs. `future: true` is required — post dates are in the future because **dates are ranking, not chronology**.
 - **`_data/roles.yml`** — current roles; renders the "What I'm doing now" timeline AND the `[ACTIVE]` lines in the hero terminal.
 - **`_data/publications.yml`** — publications; renders the homepage pub card AND the `[PUB]` terminal line.
+- **`_data/research.yml`** — research experience; renders the homepage `#research` violet timeline (title, org, dates, `status` pill, bullets, optional `outcome`/`outcome_url` DOI link). Sourced from the résumé.
 - **`_data/socials.yml`** — contact/footer links; `icon` must match a symbol id in `_includes/icons.html` (inline SVG sprite — no icon font).
-- **Projects are posts** (`_posts/YYYY-MM-DD-slug.md`). Card order = post date, newest first; flagship gets the latest date. Front matter is structured: `status` (Active/WIP/Complete/Playable → colored pill via `status--<key>` CSS), `category`, `year`, `tags` (list → pills, cards show 4 + "+N"), `repo`, optional `demo`, optional `image`/`image_alt` (no image → styled placeholder tile), `featured: true` → homepage grid. Post body = intro paragraph + `## Highlights` bullets only; buttons come from front matter via `_layouts/post.html`.
+- **Projects are posts** (`_posts/YYYY-MM-DD-slug.md`). Card order = post date, newest first; flagship gets the latest date. Front matter is structured: `status` (Active/WIP/Complete/Playable → colored pill via `status--<key>` CSS), `category`, `year`, `tags` (list → pills, cards show 4 + "+N"), `repo`, optional `demo`, optional `image`/`image_alt` (no image → styled placeholder tile), optional `image_fit: contain` (show whole image, e.g. SceneCheck) and `image_position` (crop anchor, default `top center`), `featured: true` → homepage grid. FinSight/GPT/Wine use hand-drawn palette-matched SVGs in `assets/images/projects/`. Post body = intro paragraph + `## Highlights` bullets only; buttons come from front matter via `_layouts/post.html`.
 - **`index.md`** (`layout: home`) — `landing-title` is the hero H1; body markdown is the hero bio.
 - **`projects.md`** / **`404.md`** — page-layout pages with their own section markup.
 
 ## Layouts & includes
 
 - `_layouts/default.html` — HTML shell (head, icons sprite, nav, footer); other layouts chain from it.
-- `_layouts/home.html` — hero (canvas `#net-canvas` + terminal `[data-terminal]`), `#now` timeline, `#projects` featured grid, `#publications`. Nav anchors `/#publications`, `/#contact` land here.
+- `_layouts/home.html` — hero (canvas `#net-canvas` + terminal `[data-terminal]`), `#now` timeline, `#projects` featured grid, `#research` timeline, `#publications`. Nav anchors `/#research`, `/#publications`, `/#contact` land here.
 - `_includes/footer.html` — the `#contact` section AND the footer (renders on every page).
 - `_includes/project-card.html` — card partial; takes `include.project` (a post object).
 - `_includes/head.html` — meta/OG/Twitter tags, Google Fonts (Chakra Petch, IBM Plex Sans/Mono), favicon (`assets/images/favicon.svg`).

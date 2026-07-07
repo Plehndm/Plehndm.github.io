@@ -2,7 +2,9 @@
 layout: post
 title: FinSight AI
 description: "Multi-agent platform analyzing global markets across technical, fundamental, sentiment, and macro signals"
-status: Active
+image: assets/images/projects/finsight-ai.svg
+image_alt: "Illustration of FinSight AI: candlestick market chart beside an LLM orchestrator coordinating technical, fundamental, sentiment, macro, and event agents"
+status: WIP
 category: AI/ML
 year: 2025
 featured: true

@@ -1,0 +1,32 @@
+# Research experience — rendered in the homepage "Research" section (newest first).
+# Each entry: title, org, location, dates, status (pill), summary, points (bullets),
+# optional outcome + outcome_url (link rendered after the bullets).
+- title: AI Evaluation Research
+  org: Handshake AI
+  location: Irvine, CA
+  dates: Nov 2025 – Present
+  status: ACTIVE
+  summary: >-
+    Independent research on evaluating and improving large language models
+    across text, audio, and visual inputs.
+  points:
+    - Designed domain-specific prompts and detailed scoring rubrics to benchmark LLM performance in scientific and technical subjects
+    - Conducted independent research to strengthen prompt design, scoring criteria, and error-analysis processes
+    - Evaluated model responses for factual accuracy, reasoning quality, and clarity, driving measurable gains in reliability
+    - Trained and evaluated multimodal AI systems to increase response quality and cross-modality accuracy
+
+- title: Research Assistant — Spintronics Lab
+  org: University of Denver
+  location: Denver, CO
+  dates: Oct 2024 – Jul 2025
+  status: PUBLISHED
+  summary: >-
+    Experimental condensed-matter physics research on spin-orbit torque
+    measurement, culminating in a co-authored peer-reviewed paper.
+  points:
+    - Developed LabVIEW programs for efficient, precise control of sensitive measurement equipment
+    - Fabricated and validated thin-film devices using vacuum sputtering, lithography, and verification techniques
+    - Collaborated on AutoCAD designs to build custom tools enhancing lab measurement capabilities
+    - Supported experimental workflows used in active physics research
+  outcome: "Co-authored “Field-like torque measured via a Wheatstone bridge” in the Journal of Applied Physics (2025)"
+  outcome_url: https://doi.org/10.1063/5.0300521

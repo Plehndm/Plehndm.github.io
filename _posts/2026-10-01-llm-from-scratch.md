@@ -2,6 +2,8 @@
 layout: post
 title: GPT from Scratch
 description: "Transformer-based language model implemented from first principles"
+image: assets/images/projects/gpt-from-scratch.svg
+image_alt: "Illustration of GPT internals: causal self-attention heatmap, transformer block stack, and BPE token stream predicting the next token"
 status: WIP
 category: AI/ML
 year: 2025

@@ -4,6 +4,8 @@ title: SceneCheck
 description: "Cross-platform event discovery app pairing location-based search with social features"
 image: assets/images/SceneCheck_Homepage.png
 image_alt: "SceneCheck homepage showing event discovery UI"
+image_fit: contain
+image_position: center
 status: Active
 category: Full-Stack
 year: 2026

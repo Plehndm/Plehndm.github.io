@@ -653,7 +653,8 @@ a.eyebrow-path:hover {
   background: rgba(122, 240, 176, 0.06);
 }
 
-.status--playable {
+.status--playable,
+.status--published {
   color: var(--violet);
   border-color: rgba(169, 155, 232, 0.38);
   background: rgba(169, 155, 232, 0.08);
@@ -969,6 +970,59 @@ a.eyebrow-path:hover {
   color: var(--dim);
   font-size: 0.95rem;
   margin-bottom: 0.3rem;
+}
+
+/* ---------- research ---------- */
+
+.timeline--violet::before {
+  background: linear-gradient(to bottom, var(--violet), var(--signal), transparent);
+}
+
+.timeline--violet .timeline-node {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 4px rgba(169, 155, 232, 0.14);
+}
+
+.research-card:hover {
+  border-color: rgba(169, 155, 232, 0.4);
+}
+
+.research-points {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.research-points li {
+  color: var(--dim);
+  font-size: 0.92rem;
+  padding-left: 1.15rem;
+  position: relative;
+}
+
+.research-points li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--violet);
+  font-family: var(--font-mono);
+}
+
+.research-outcome {
+  margin: 0 0 0.4rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.research-outcome a {
+  color: var(--violet);
+}
+
+.research-outcome a:hover {
+  color: #c5bbf2;
 }
 
 /* ---------- publications ---------- */

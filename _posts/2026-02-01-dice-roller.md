@@ -4,6 +4,7 @@ title: Dice Roller App
 description: "Flutter virtual dice roller built to learn mobile fundamentals"
 image: assets/images/projects/dice-roller-screenshot.png
 image_alt: "Dice Roller app showing a rolled die"
+image_position: center
 status: Complete
 category: Games
 year: 2024

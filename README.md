@@ -24,6 +24,7 @@ Content is data-driven — most updates never touch markup:
 | Hero heading + bio | `index.md` (`landing-title` + body markdown) |
 | Current roles ("What I'm doing now" + terminal status log) | `_data/roles.yml` |
 | Publications (homepage cards + terminal status log) | `_data/publications.yml` |
+| Research experience ("Research" section) | `_data/research.yml` |
 | Social links (contact section + footer) | `_data/socials.yml` |
 | Projects (cards + detail pages) | `_posts/YYYY-MM-DD-slug.md` |
 | Résumé PDF | `assets/pdf/David_Plehn_Resume.pdf` |
@@ -40,6 +41,8 @@ title: My Project
 description: "One-line caption shown on the card"
 image: assets/images/my-screenshot.png   # omit for a styled placeholder
 image_alt: "What the screenshot shows"
+image_fit: contain      # optional — show the whole image instead of cropping
+image_position: center  # optional — which part survives the crop (default: top center)
 status: Active        # Active | WIP | Complete | Playable (colors the pill)
 category: AI/ML       # shown in the card footer
 year: 2026

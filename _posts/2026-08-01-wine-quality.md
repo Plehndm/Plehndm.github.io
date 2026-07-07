@@ -2,8 +2,8 @@
 layout: post
 title: ML Wine Quality Predictor
 description: "Multi-class wine quality prediction with logistic regression and feature analysis"
-image: assets/images/ML_Project_Displayed_ROC_AUC_scores_for_Red_Wine_Model.png
-image_alt: "ROC AUC score curves for the red wine quality model"
+image: assets/images/projects/wine-quality.svg
+image_alt: "Illustration of the wine quality model: ROC curves for high, mid, and low quality classes with top feature importances"
 status: Complete
 category: Data Science
 year: 2024

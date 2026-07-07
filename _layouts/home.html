@@ -88,6 +88,40 @@ layout: default
   </div>
 </section>
 
+<!-- Research -->
+<section id="research" class="section">
+  <div class="inner">
+    <p class="eyebrow reveal"><span class="eyebrow-path">~/research</span></p>
+    <h2 class="section-title reveal">Research</h2>
+    <ol class="timeline timeline--violet">
+      {% for item in site.data.research %}
+      <li class="timeline-item reveal">
+        <div class="timeline-node" aria-hidden="true"></div>
+        <div class="now-card research-card">
+          <div class="now-head">
+            <h3>{{ item.title }}</h3>
+            <span class="status status--{{ item.status | downcase }}"><span class="status-dot" aria-hidden="true"></span>{{ item.status }}</span>
+          </div>
+          <p class="now-org">{{ item.org }}</p>
+          <p class="now-meta">{{ item.location }} · {{ item.dates }}</p>
+          <p class="now-summary">{{ item.summary }}</p>
+          <ul class="research-points">
+            {% for point in item.points %}
+            <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+          {% if item.outcome %}
+          <p class="research-outcome">
+            <a href="{{ item.outcome_url }}" target="_blank" rel="noopener">{{ item.outcome }} <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+          </p>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
 <!-- Publications -->
 <section id="publications" class="section">
   <div class="inner">
