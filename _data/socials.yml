@@ -1,0 +1,16 @@
+# Social links — rendered in the contact section and footer.
+# icon must match an SVG symbol id in _includes/icons.html.
+- name: GitHub
+  icon: github
+  url: https://github.com/Plehndm
+  handle: github.com/Plehndm
+
+- name: LinkedIn
+  icon: linkedin
+  url: https://www.linkedin.com/in/david-plehn
+  handle: in/david-plehn
+
+- name: Instagram
+  icon: instagram
+  url: https://www.instagram.com/dplehn_314
+  handle: "@dplehn_314"

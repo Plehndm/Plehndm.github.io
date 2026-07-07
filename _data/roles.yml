@@ -1,0 +1,21 @@
+# Current roles — rendered in the "What I'm doing now" section (newest first).
+# Each entry: title, org, location, dates, summary, status (shown as a terminal pill).
+- title: Systems Engineer Intern
+  org: Lockheed Martin
+  location: Colorado Springs, CO
+  dates: Jun 2026 – Present
+  status: ACTIVE
+  summary: >-
+    Automating mission-critical systems with Python, modernizing network
+    configurations, and applying DevOps practices to improve reliability,
+    security, and latency.
+
+- title: AI Trainer
+  org: Handshake AI
+  location: Irvine, CA
+  dates: Nov 2025 – Present
+  status: ACTIVE
+  summary: >-
+    Benchmarking and evaluating large language models across text, audio, and
+    vision — designing domain-specific prompts, scoring rubrics, and error
+    analysis to drive measurable gains in model accuracy and reasoning.

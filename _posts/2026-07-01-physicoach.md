@@ -3,9 +3,17 @@ layout: post
 title: PhysiCoach
 description: "Mobile fitness coaching and physical-therapy tracking app"
 image: assets/images/PhysiCoach_Project_App_StoryBoard.png
+image_alt: "PhysiCoach app storyboard showing guided exercise screens"
+status: WIP
+category: Full-Stack
+year: 2026
+repo: https://github.com/Plehndm/PhysiCoach-App
+tags:
+  - Flutter
+  - Dart
+  - Firebase
+  - FlutterFlow
 ---
-
-**Status:** WIP &nbsp;·&nbsp; **Category:** Full-Stack &nbsp;·&nbsp; 2026
 
 A mobile coaching app that guides users through fitness and therapeutic exercise routines while tracking progress over time. Built with Flutter and Firebase, it offers step-by-step guided exercises, personalized routines, and motivational feedback for both fitness enthusiasts and physical therapy patients. Work in progress.
 
@@ -16,12 +24,3 @@ A mobile coaching app that guides users through fitness and therapeutic exercise
 - Mobile-first interface built with Flutter
 - Personalized motivational feedback
 - Multi-platform targets via Flutter (iOS, Android, Web)
-
-## Tech stack
-
-Flutter · Dart · Firebase · FlutterFlow · iOS · Android · Web
-
-<ul class="actions">
-  <li><a href="https://github.com/Plehndm/PhysiCoach-App" class="button" target="_blank" rel="noopener">View on GitHub</a></li>
-  <li><a href="/" class="button">Back to all projects</a></li>
-</ul>

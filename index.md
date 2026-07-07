@@ -2,10 +2,6 @@
 layout: home
 title: Home
 landing-title: "Hi, I'm David Plehn"
-description: null
-image: null
-author: null
-show_tile: false
 ---
 
 I'm a second-year student at UC Irvine double-majoring in **Computer Science (Intelligent Systems)** and **Quantitative Economics**, with a minor in Statistics. I build across the stack — large language models from first principles, multi-agent AI platforms, and cross-platform apps shipped to web, iOS, and Android.

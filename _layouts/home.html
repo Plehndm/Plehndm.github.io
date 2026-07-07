@@ -1,79 +1,106 @@
-<!DOCTYPE html>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-
-{% include head.html %}
-
-<body>
-
-    {% include header.html %}
-
-    <!-- Banner -->
-    <section id="banner" class="major">
-        <div class="inner">
-            <header class="major">
-                <img class="avatar" src="{{ '/assets/images/profile_photo.jpg' | relative_url }}" alt="David Plehn" />
-                <h1>{{ page.landing-title }}</h1>
-            </header>
-            <div class="content">
-                {{ content }}
-                <ul class="actions">
-                    <li><a href="https://github.com/Plehndm" class="button" target="_blank" rel="noopener">GitHub</a></li>
-                    <li><a href="{{ '/projects/' | relative_url }}" class="button next">View Projects</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main -->
-    <div id="main">
-
-        <!-- Currently -->
-        <section id="now">
-            <div class="inner">
-                <header class="major">
-                    <h2>What I'm doing now</h2>
-                </header>
-                <div class="now-grid">
-                    <div class="now-card">
-                        <h3>Systems Engineer Intern</h3>
-                        <p class="now-org">Lockheed Martin — Colorado Springs, CO · Jun 2026 – Present</p>
-                        <p>Automating mission-critical systems with Python, modernizing network configurations, and applying DevOps practices to improve reliability, security, and latency.</p>
-                    </div>
-                    <div class="now-card">
-                        <h3>AI Trainer</h3>
-                        <p class="now-org">Handshake AI — Irvine, CA · Nov 2025 – Present</p>
-                        <p>Benchmarking and evaluating large language models across text, audio, and vision — designing domain-specific prompts, scoring rubrics, and error analysis to drive measurable gains in model accuracy and reasoning.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Publications -->
-        <section id="publications">
-            <div class="inner">
-                <header class="major">
-                    <h2>Publications</h2>
-                </header>
-                <div class="pub-card">
-                    <h3>Field-like torque measured via a Wheatstone bridge</h3>
-                    <p class="pub-meta">Journal of Applied Physics · 2025 · Co-author</p>
-                    <p>Designed an optimized Wheatstone-bridge geometry that improves signal sensitivity for measuring field-like spin-orbit torque — enabling reliable SOT-MRAM characterization, in-situ calibration, and materials screening while reducing experimental complexity.</p>
-                    <ul class="actions">
-                        <li><a href="https://doi.org/10.1063/5.0300521" class="button special" target="_blank" rel="noopener">Read the paper · DOI</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
+---
+layout: default
+---
+<!-- Hero -->
+<section class="hero">
+  <canvas id="net-canvas" aria-hidden="true"></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="inner hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow hero-eyebrow"><span class="eyebrow-path">{{ site.subtitle | downcase }}</span> — uc irvine</p>
+      <h1 class="hero-title">{{ page.landing-title | default: site.title }}<span class="hero-caret" aria-hidden="true"></span></h1>
+      <div class="hero-bio">
+        {{ content }}
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn--primary" href="{{ '/projects/' | relative_url }}">View projects <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="{{ site.resume | relative_url }}" target="_blank" rel="noopener">Résumé (PDF)</a>
+      </div>
     </div>
 
-    {% include footer.html %}
+    <div class="hero-terminal">
+      <div class="terminal" data-terminal>
+        <div class="terminal-bar">
+          <span class="term-dot term-dot--r" aria-hidden="true"></span>
+          <span class="term-dot term-dot--y" aria-hidden="true"></span>
+          <span class="term-dot term-dot--g" aria-hidden="true"></span>
+          <span class="terminal-title">david@uci: ~</span>
+        </div>
+        <div class="terminal-screen">
+          <p class="term-line" data-cmd><span class="term-prompt">david@uci:~$</span> <span class="term-cmd">whoami</span></p>
+          <p class="term-line term-out">CS (Intelligent Systems) + Quant Econ @ UC Irvine · Statistics minor</p>
+          <p class="term-line" data-cmd><span class="term-prompt">david@uci:~$</span> <span class="term-cmd">cat status.log</span></p>
+          {% for role in site.data.roles %}
+          <p class="term-line term-out"><span class="term-tag term-tag--active">[{{ role.status }}]</span> {{ role.title }} @ {{ role.org }}</p>
+          {% endfor %}
+          {% for pub in site.data.publications %}
+          <p class="term-line term-out"><span class="term-tag term-tag--pub">[PUB&nbsp;&nbsp;&nbsp;]</span> {{ pub.venue }} · {{ pub.year }} · {{ pub.role | downcase }}</p>
+          {% endfor %}
+          <p class="term-line" data-cmd><span class="term-prompt">david@uci:~$</span> <span class="term-cmd">open profile.jpg</span></p>
+          <div class="term-line term-photo">
+            <img src="{{ '/assets/images/profile_photo.jpg' | relative_url }}" alt="David Plehn" width="112" height="112" />
+          </div>
+          <p class="term-line term-idle"><span class="term-prompt">david@uci:~$</span> <span class="term-cursor" aria-hidden="true"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</body>
+<!-- What I'm doing now -->
+<section id="now" class="section">
+  <div class="inner">
+    <p class="eyebrow reveal"><span class="eyebrow-path">~/now</span></p>
+    <h2 class="section-title reveal">What I'm doing now</h2>
+    <ol class="timeline">
+      {% for role in site.data.roles %}
+      <li class="timeline-item reveal">
+        <div class="timeline-node" aria-hidden="true"></div>
+        <div class="now-card">
+          <div class="now-head">
+            <h3>{{ role.title }}</h3>
+            <span class="status status--active"><span class="status-dot" aria-hidden="true"></span>{{ role.status }}</span>
+          </div>
+          <p class="now-org">{{ role.org }}</p>
+          <p class="now-meta">{{ role.location }} · {{ role.dates }}</p>
+          <p class="now-summary">{{ role.summary }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
 
-</html>
+<!-- Featured projects -->
+<section id="projects" class="section">
+  <div class="inner">
+    <p class="eyebrow reveal"><span class="eyebrow-path">~/projects</span> --featured</p>
+    <div class="section-head-row reveal">
+      <h2 class="section-title">Featured projects</h2>
+      <a class="section-link" href="{{ '/projects/' | relative_url }}">ls --all ({{ site.posts | size }}) <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+    </div>
+    <div class="project-grid">
+      {% assign featured = site.posts | where: "featured", true %}
+      {% for project in featured %}
+      {% include project-card.html project=project %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Publications -->
+<section id="publications" class="section">
+  <div class="inner">
+    <p class="eyebrow reveal"><span class="eyebrow-path">~/publications</span></p>
+    <h2 class="section-title reveal">Publications</h2>
+    {% for pub in site.data.publications %}
+    <article class="pub-card reveal">
+      <p class="pub-doi">doi: {{ pub.doi_label }}</p>
+      <h3 class="pub-title">{{ pub.title }}</h3>
+      <p class="pub-meta">{{ pub.venue }} · {{ pub.year }} · {{ pub.role }}</p>
+      <p class="pub-abstract">{{ pub.abstract }}</p>
+      <a class="btn btn--primary" href="{{ pub.doi }}" target="_blank" rel="noopener">Read the paper <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+    </article>
+    {% endfor %}
+  </div>
+</section>

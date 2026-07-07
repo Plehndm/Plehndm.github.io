@@ -1,36 +1,49 @@
-<!DOCTYPE html>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+---
+layout: default
+---
+{% assign status_key = page.status | downcase %}
+<article class="project-page">
+  <div class="inner inner--narrow">
+    <header class="project-header">
+      <p class="eyebrow"><span><a class="eyebrow-path" href="{{ '/projects/' | relative_url }}">~/projects</a>/{{ page.slug }}</span></p>
+      <h1 class="project-title">{{ page.title }}</h1>
+      <div class="project-meta">
+        <span class="status status--{{ status_key }}"><span class="status-dot" aria-hidden="true"></span>{{ page.status | upcase }}</span>
+        <span class="project-meta-item">{{ page.category }}</span>
+        <span class="project-meta-item">{{ page.year }}</span>
+      </div>
+      {% if page.tags.size > 0 %}
+      <ul class="card-tags project-tags" aria-label="Tech stack">
+        {% for tag in page.tags %}
+        <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </header>
 
-{% include head.html %}
+    {% if page.image %}
+    <figure class="project-figure reveal">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" />
+    </figure>
+    {% endif %}
 
-<body>
+    <div class="prose">
+      {{ content }}
+    </div>
 
-    {% include header.html %} 
-    
-    
-<!-- Main -->
-<div id="main" class="alt">
-
-<!-- One -->
-<section id="one">
-	<div class="inner">
-		<header class="major">
-			<h1>{{ page.title }}</h1>
-		</header>
-		{% if page.image %}<span class="image main"><img src="{{ site.baseurl }}/{{ page.image }}" alt="" /></span>{% endif %}
-		{{ content }}
-	</div>
-</section>
-
-</div>
-
-    {% include footer.html %}
-
-</body>
-
-</html>
+    <div class="project-actions">
+      {% if page.repo %}
+      <a class="btn btn--primary" href="{{ page.repo }}" target="_blank" rel="noopener">
+        <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg>
+        View on GitHub
+      </a>
+      {% endif %}
+      {% if page.demo %}
+      <a class="btn btn--primary" href="{{ page.demo }}" target="_blank" rel="noopener">
+        Live demo <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg>
+      </a>
+      {% endif %}
+      <a class="btn btn--ghost" href="{{ '/projects/' | relative_url }}">cd ../projects</a>
+    </div>
+  </div>
+</article>

@@ -4,28 +4,41 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal portfolio site (`Plehndm.github.io`) — a static **Jekyll** site built on the **Forty** theme (HTML5 UP, Jekyll port by Andrew Banchich). It's an image-tile portfolio: the homepage is a grid of project tiles, each linking to a detail page. Emphasis is SWE / AI / data-science internship recruiting.
+Personal portfolio site (`Plehndm.github.io`) — a static **Jekyll 4** site with a **fully custom design** (no theme, no CSS framework, no JS dependencies). Dark-indigo cyberpunk-terminal aesthetic: cyan/violet accents, Chakra Petch + IBM Plex type, a canvas particle-network hero with a typed terminal window. Emphasis is SWE / AI / data-science internship recruiting. (This replaced the earlier Forty/HTML5 UP build; all Forty files — `_sass/`, jQuery/skel JS, font-awesome, Vanta CDN — were removed.)
 
 ## Build & deploy
 
-Forty needs Jekyll 4.x, which GitHub Pages' native builder won't run, so deployment uses the official **GitHub Actions → Pages** flow:
+Jekyll 4.x, which GitHub Pages' native builder won't run, so deployment uses the **GitHub Actions → Pages** flow:
 
-- `.github/workflows/deploy.yml` runs `bundle exec jekyll build` and publishes `_site` via `actions/upload-pages-artifact` + `actions/deploy-pages` on every push to `main`. **Pages Source must be "GitHub Actions"** (Settings → Pages), not "Deploy from a branch".
-- Local preview: `bundle install` then `bundle exec jekyll serve` → http://localhost:4000.
+- `.github/workflows/deploy.yml` runs `bundle exec jekyll build` and publishes `_site` via `actions/upload-pages-artifact` + `actions/deploy-pages` on every push to `main`. **Pages Source must be "GitHub Actions"** (Settings → Pages).
+- Local preview: `bundle install` then `bundle exec jekyll serve` → http://localhost:4000. No local Ruby? `docker run --rm -v "$PWD:/srv/site" ruby:3.3 bash -c "gem install jekyll --no-document && jekyll build --source /srv/site --destination /srv/site/_site_build"` (that output dir is gitignored).
 
-## Content architecture
+## Content architecture (data-driven)
 
-- **`_config.yml`** — site identity (`title`, `subtitle`, `description`, `email`, `url`, `baseurl: ""`), `socials` (only non-empty entries render in the footer), and tile settings: `tiles-source: posts` + `tiles-count`. `permalink: /projects/:title/` gives project pages clean `/projects/<slug>/` URLs.
-- **Projects are posts.** Each project is a file in **`_posts/YYYY-MM-DD-slug.md`** with front matter `title`, `description` (the tile caption), `image` (tile thumbnail, e.g. `assets/images/picNN.jpg`), and a body (status line, description, Highlights, Tech stack, action buttons). **Tile order = post date, newest first** — dates are assigned descending by importance (flagship = latest date), NOT by real chronology. To reorder, change the dates.
-- **`index.md`** (`layout: home`) — the landing page: `landing-title` is the hero heading; the body markdown renders in the "About" section. Hero subheading comes from `site.description`.
-- **`_includes/tiles.html`** — renders the tile grid from `site.posts` (because `tiles-source: posts`), using each post's `image`/`title`/`description`/`url`.
-- **`_includes/header.html` / `footer.html`** — nav and the contact/socials footer (customized: email + GitHub + LinkedIn, no contact form).
-- **`_layouts/`** — `home.html` (landing + tiles + About), `post.html` (project detail), `page.html`.
-- **`assets/`** — `images/` (mostly real project screenshots/photos, with a couple of Forty stock placeholders — `pic02.jpg`/`pic03.jpg` — for the projects without a screenshot yet), `css/main.scss` (compiles to main.css), `js/`, `fonts/`, `pdf/David_Plehn_Resume.pdf`.
+- **`_config.yml`** — site identity (`title`, `subtitle`, `description`, `email`, `url`), plus `resume`, `repo_url`, `og_image`, `github_username`. `permalink: /projects/:title/` gives project pages `/projects/<slug>/` URLs. `future: true` is required — post dates are in the future because **dates are ranking, not chronology**.
+- **`_data/roles.yml`** — current roles; renders the "What I'm doing now" timeline AND the `[ACTIVE]` lines in the hero terminal.
+- **`_data/publications.yml`** — publications; renders the homepage pub card AND the `[PUB]` terminal line.
+- **`_data/socials.yml`** — contact/footer links; `icon` must match a symbol id in `_includes/icons.html` (inline SVG sprite — no icon font).
+- **Projects are posts** (`_posts/YYYY-MM-DD-slug.md`). Card order = post date, newest first; flagship gets the latest date. Front matter is structured: `status` (Active/WIP/Complete/Playable → colored pill via `status--<key>` CSS), `category`, `year`, `tags` (list → pills, cards show 4 + "+N"), `repo`, optional `demo`, optional `image`/`image_alt` (no image → styled placeholder tile), `featured: true` → homepage grid. Post body = intro paragraph + `## Highlights` bullets only; buttons come from front matter via `_layouts/post.html`.
+- **`index.md`** (`layout: home`) — `landing-title` is the hero H1; body markdown is the hero bio.
+- **`projects.md`** / **`404.md`** — page-layout pages with their own section markup.
 
-### Conventions / gotchas
+## Layouts & includes
 
-- Adding a project = add a `_posts/` file with a date that places it correctly in the tile order, plus an `image`. `tiles-count` in `_config.yml` must be ≥ the number of projects (currently 12 for 11 tiles).
-- The research-paper tile is a post with no GitHub repo (links out to the DOI) — not all tiles are repos.
-- Project tile images are stock placeholders today; swapping in real screenshots (`assets/images/`) is the biggest visual win.
-- This replaced an earlier al-folio build; all al-folio files (`_bibliography`, `_data`, `_pages`, `_projects`, `_sass`, etc.) were removed in the Forty migration.
+- `_layouts/default.html` — HTML shell (head, icons sprite, nav, footer); other layouts chain from it.
+- `_layouts/home.html` — hero (canvas `#net-canvas` + terminal `[data-terminal]`), `#now` timeline, `#projects` featured grid, `#publications`. Nav anchors `/#publications`, `/#contact` land here.
+- `_includes/footer.html` — the `#contact` section AND the footer (renders on every page).
+- `_includes/project-card.html` — card partial; takes `include.project` (a post object).
+- `_includes/head.html` — meta/OG/Twitter tags, Google Fonts (Chakra Petch, IBM Plex Sans/Mono), favicon (`assets/images/favicon.svg`).
+
+## CSS & JS
+
+- **`assets/css/main.scss`** — the entire design system, self-contained (front-matter dashes → Jekyll compiles to `main.css`). Design tokens (palette, fonts, shadows) are CSS custom properties in `:root` at the top — change colors there. Sections are labeled with `/* ---------- */` comments. Mostly flat selectors; avoid adding specificity wars. Gotcha: the mobile nav dropdown uses an **opaque** background on purpose — `backdrop-filter` on it hit compositing bugs.
+- **`assets/js/main.js`** — vanilla, no dependencies: nav scrolled-state + mobile toggle, IntersectionObserver reveals (`.reveal` → `.is-visible`, staggered via `--reveal-delay`), the terminal typing boot sequence, and the canvas particle network (pauses off-screen, DPR-aware). Everything is gated on `prefers-reduced-motion`, and reveal-hiding only applies when JS adds `html.js` — no-JS visitors see everything.
+
+## Conventions / gotchas
+
+- Adding a project = one `_posts/` file with structured front matter (see README for the template). Pick a date that slots it into the desired card order.
+- The publication has no repo — it links to its DOI from `_data/publications.yml`.
+- `sitemap.xml` is hand-rolled Liquid (no plugin, keeps Gemfile.lock-free CI happy); pages opt out with `sitemap: false`. `robots.txt` points at it.
+- Statuses map to colors in CSS: active=cyan, wip=amber, complete=green, playable=violet. New status values need a matching `.status--<key>` rule.

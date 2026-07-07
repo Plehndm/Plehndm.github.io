@@ -1,120 +1,52 @@
 <!-- Contact -->
-<section id="contact">
-	<div class="inner">
-		<section>
-			<header class="major">
-				<h2>Get in touch</h2>
-			</header>
-			<p>I'm looking for software engineering, AI/ML, and data science internships, as well as research opportunities — and I'm always happy to talk shop. The fastest way to reach me is email.</p>
-			<ul class="actions">
-				<li><a href="mailto:{{ site.email }}" class="button special">Email me</a></li>
-				<li><a href="{{ '/assets/pdf/David_Plehn_Resume.pdf' | relative_url }}" class="button" target="_blank" rel="noopener">Résumé (PDF)</a></li>
-			</ul>
-		</section>
-		<section class="split">
-			<section>
-				<div class="contact-method">
-					<span class="icon alt fa-envelope"></span>
-					<h3>Email</h3>
-					<a href="mailto:{{ site.email }}">{{ site.email }}</a>
-				</div>
-			</section>
-			<section>
-				<div class="contact-method">
-					<span class="icon alt fa-github"></span>
-					<h3>GitHub</h3>
-					<a href="https://github.com/Plehndm" target="_blank" rel="noopener">github.com/Plehndm</a>
-				</div>
-			</section>
-			<section>
-				<div class="contact-method">
-					<span class="icon alt fa-linkedin"></span>
-					<h3>LinkedIn</h3>
-					<a href="https://www.linkedin.com/in/david-plehn" target="_blank" rel="noopener">in/david-plehn</a>
-				</div>
-			</section>
-		</section>
-	</div>
+<section id="contact" class="section section--contact">
+  <div class="inner">
+    <p class="eyebrow reveal"><span class="eyebrow-path">~/contact</span></p>
+    <h2 class="section-title reveal">Get in touch</h2>
+    <div class="contact-grid">
+      <div class="contact-copy reveal">
+        <p>I'm looking for software engineering, AI/ML, and data science internships, as well as research opportunities — and I'm always happy to talk shop. The fastest way to reach me is email.</p>
+        <div class="contact-actions">
+          <a class="btn btn--primary" href="mailto:{{ site.email }}">
+            <svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg>
+            Email me
+          </a>
+          <a class="btn btn--ghost" href="{{ site.resume | relative_url }}" target="_blank" rel="noopener">Résumé (PDF)</a>
+        </div>
+      </div>
+      <ul class="contact-channels reveal">
+        <li>
+          <a href="mailto:{{ site.email }}">
+            <svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg>
+            <span class="channel-name">email</span>
+            <span class="channel-handle">{{ site.email }}</span>
+          </a>
+        </li>
+        {% for social in site.data.socials %}
+        <li>
+          <a href="{{ social.url }}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-{{ social.icon }}"/></svg>
+            <span class="channel-name">{{ social.name | downcase }}</span>
+            <span class="channel-handle">{{ social.handle }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- Footer -->
-	<footer id="footer">
-		<div class="inner">
-			<ul class="icons">
-				{% for key_value in site.socials %}
-					{% if key_value[1] %}
-						<li>
-							<a href="{{ key_value[1] }}" class="icon alt fa-{{ key_value[0] | downcase }}" target="_blank" rel="noopener noreferrer" aria-label="{{ key_value[0] }}">
-								<span class="label">{{ key_value[0] }}</span>
-							</a>
-						</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
-			<ul class="copyright">
-				<li>&copy; {{ site.title }} {{ site.subtitle }}</li>
-				<li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
-				<li>Jekyll integration: <a href="https://github.com/andrewbanchich" target="_blank">Andrew Banchich</a></li>
-
-			</ul>
-		</div>
-	</footer>
-
-</div>
-
-<!-- Scripts -->
-	<script src="{{ "assets/js/jquery.min.js" | absolute_url }}"></script>
-	<script src="{{ "assets/js/jquery.scrolly.min.js" | absolute_url }}"></script>
-	<script src="{{ "assets/js/jquery.scrollex.min.js" | absolute_url }}"></script>
-	<script src="{{ "assets/js/skel.min.js" | absolute_url }}"></script>
-	<script src="{{ "assets/js/util.js" | absolute_url }}"></script>
-	<!--[if lte IE 8]><script src="{{ "assets/js/ie/respond.min.js" | absolute_url }}"></script><![endif]-->
-	<script src="{{ "assets/js/main.js" | absolute_url }}"></script>
-
-<!-- Animated background: Vanta (three.js) — per-page via front-matter bg-effect -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
-	<script>
-		(function () {
-			var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-			var el = document.getElementById('vanta-bg');
-			var effect = "{{ page.bg-effect | default: 'globe' }}";
-			document.body.classList.add('bg-' + effect); // drives the per-effect dimming scrim
-			if (!el || reduceMotion || !window.VANTA) return;
-			try {
-				if (effect === 'net' && window.VANTA.NET) {
-					window._vantaEffect = window.VANTA.NET({
-						el: el,
-						mouseControls: true,
-						touchControls: true,
-						gyroControls: false,
-						minHeight: 200.0,
-						minWidth: 200.0,
-						scale: 1.0,
-						scaleMobile: 1.0,
-						backgroundColor: 0x242943, // matches theme palette bg
-						color: 0x9bf1ff,           // theme highlight
-						points: 12.0,
-						maxDistance: 22.0,
-						spacing: 16.0
-					});
-				} else if (window.VANTA.GLOBE) {
-					window._vantaEffect = window.VANTA.GLOBE({
-						el: el,
-						mouseControls: true,
-						touchControls: true,
-						gyroControls: false,
-						minHeight: 200.0,
-						minWidth: 200.0,
-						scale: 1.0,
-						scaleMobile: 1.0,
-						backgroundColor: 0x242943, // matches theme palette bg
-						color: 0x9bf1ff,           // theme highlight
-						color2: 0x8d82c4,          // theme accent2
-						size: 1.0
-					});
-				}
-			} catch (e) { /* WebGL unsupported -> static dark fallback */ }
-		})();
-	</script>
+<footer class="site-footer">
+  <div class="inner">
+    <p class="footer-line">
+      <span class="footer-prompt">$</span> echo "&copy; {{ site.time | date: '%Y' }} {{ site.title }} · {{ site.subtitle }}"
+    </p>
+    <ul class="footer-links">
+      {% for social in site.data.socials %}
+      <li><a href="{{ social.url }}" target="_blank" rel="noopener" aria-label="{{ social.name }}"><svg class="icon" aria-hidden="true"><use href="#icon-{{ social.icon }}"/></svg></a></li>
+      {% endfor %}
+      <li><a class="footer-source" href="{{ site.repo_url }}" target="_blank" rel="noopener">[view source]</a></li>
+    </ul>
+  </div>
+</footer>

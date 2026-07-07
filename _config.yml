@@ -10,29 +10,16 @@ city: Irvine
 state: CA
 country: United States
 
-# homepage tiles
-tiles-source: posts # accepts "posts" or "pages"
-tiles-count: 12
-
-# social settings (key must match the name of a Font Awesome brand icon)
-# Icons are not shown if the value is empty
-socials:
-  GitHub: https://github.com/Plehndm
-  LinkedIn: https://www.linkedin.com/in/david-plehn
-  Instagram: https://www.instagram.com/dplehn_314
+# links used across the site (data-driven content lives in _data/)
+github_username: Plehndm
+repo_url: https://github.com/Plehndm/Plehndm.github.io
+resume: /assets/pdf/David_Plehn_Resume.pdf
+og_image: /assets/images/profile_photo.jpg
 
 # build settings
 markdown: kramdown
 permalink: /projects/:title/
-future: true # build posts whose dates are in the future (project tile ordering uses future dates)
-
-# Project detail pages (posts) use the NET ("neurons") animated background
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      bg-effect: net
+future: true # build posts whose dates are in the future (project ordering uses future dates)
 
 sass:
   style: compressed

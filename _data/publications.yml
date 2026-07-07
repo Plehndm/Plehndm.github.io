@@ -1,0 +1,13 @@
+# Publications — rendered on the homepage. Each entry: title, venue, year,
+# role, doi (full URL), doi_label (short display form), abstract.
+- title: Field-like torque measured via a Wheatstone bridge
+  venue: Journal of Applied Physics
+  year: 2025
+  role: Co-author
+  doi: https://doi.org/10.1063/5.0300521
+  doi_label: 10.1063/5.0300521
+  abstract: >-
+    Designed an optimized Wheatstone-bridge geometry that improves signal
+    sensitivity for measuring field-like spin-orbit torque — enabling reliable
+    SOT-MRAM characterization, in-situ calibration, and materials screening
+    while reducing experimental complexity.

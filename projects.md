@@ -1,22 +1,24 @@
 ---
 layout: page
 title: Projects
+description: "Projects by David Plehn — AI/ML systems, full-stack apps, data science, and games."
 permalink: /projects/
-nav-menu: false
-bg-effect: net
 ---
 
-<div id="main">
+<section class="section section--page-head">
+  <div class="inner">
+    <p class="eyebrow"><span class="eyebrow-path">~/projects</span> $ ls -la</p>
+    <h1 class="section-title">Projects</h1>
+    <p class="section-lede">{{ site.posts | size }} things I've built and explored — AI/ML systems, full-stack apps, data science, and games. Click any card to read more.</p>
+  </div>
+</section>
 
-    <div class="section-heading">
-        <div class="inner">
-            <header class="major">
-                <h2>Projects</h2>
-            </header>
-            <p>A selection of things I've built and explored — click any tile to read more.</p>
-        </div>
+<section class="section section--grid">
+  <div class="inner">
+    <div class="project-grid">
+      {% for project in site.posts %}
+      {% include project-card.html project=project %}
+      {% endfor %}
     </div>
-
-    {% include tiles.html %}
-
-</div>
+  </div>
+</section>

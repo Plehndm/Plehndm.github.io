@@ -1,0 +1,24 @@
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-nav" data-nav>
+  <div class="nav-inner">
+    <a href="{{ '/' | relative_url }}" class="nav-logo" aria-label="David Plehn — home">
+      <span class="logo-user">david</span><span class="logo-at">@</span><span class="logo-host">plehn</span><span class="logo-path">:~$</span><span class="logo-cursor" aria-hidden="true"></span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-nav-toggle>
+      <span class="nav-toggle-label">menu</span>
+      <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
+    </button>
+
+    <nav id="site-menu" class="nav-menu" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == "/" %}aria-current="page"{% endif %}>home</a></li>
+        <li><a href="{{ '/projects/' | relative_url }}" {% if page.url == "/projects/" or page.layout == "post" %}aria-current="page"{% endif %}>projects</a></li>
+        <li><a href="{{ '/#publications' | relative_url }}">publications</a></li>
+        <li><a href="{{ '/#contact' | relative_url }}">contact</a></li>
+      </ul>
+      <a class="btn btn--ghost btn--small nav-resume" href="{{ site.resume | relative_url }}" target="_blank" rel="noopener">résumé.pdf</a>
+    </nav>
+  </div>
+</header>

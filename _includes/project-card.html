@@ -1,0 +1,40 @@
+{% assign project = include.project %}
+{% assign status_key = project.status | downcase %}
+<article class="project-card reveal">
+  <a class="card-media" href="{{ project.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    {% if project.image %}
+    <img src="{{ project.image | relative_url }}" alt="" loading="lazy" />
+    {% else %}
+    <span class="card-media-placeholder">
+      <span class="placeholder-glyph">{{ project.title | slice: 0, 1 }}</span>
+      <span class="placeholder-path">~/projects/{{ project.slug }}</span>
+    </span>
+    {% endif %}
+    <span class="card-scan" aria-hidden="true"></span>
+  </a>
+  <div class="card-body">
+    <div class="card-head">
+      <h3 class="card-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+      <span class="status status--{{ status_key }}"><span class="status-dot" aria-hidden="true"></span>{{ project.status | upcase }}</span>
+    </div>
+    <p class="card-desc">{{ project.description }}</p>
+    <ul class="card-tags" aria-label="Tech stack">
+      {% for tag in project.tags limit: 4 %}
+      <li>{{ tag }}</li>
+      {% endfor %}
+      {% assign extra = project.tags.size | minus: 4 %}
+      {% if extra > 0 %}<li class="tag-more">+{{ extra }}</li>{% endif %}
+    </ul>
+    <div class="card-foot">
+      <span class="card-meta">{{ project.category }} · {{ project.year }}</span>
+      <span class="card-links">
+        {% if project.repo %}
+        <a class="card-repo" href="{{ project.repo }}" target="_blank" rel="noopener" aria-label="{{ project.title }} on GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg>
+        </a>
+        {% endif %}
+        <a class="card-more" href="{{ project.url | relative_url }}">read more <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      </span>
+    </div>
+  </div>
+</article>
