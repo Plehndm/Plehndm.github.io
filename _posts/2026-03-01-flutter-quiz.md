@@ -4,6 +4,7 @@ title: Flutter Quiz App
 description: "Cross-platform quiz app with instant scoring"
 image: assets/images/projects/flutter-quiz-screenshot.png
 image_alt: "Flutter Quiz App question screen with answer options"
+image_fit: contain
 image_position: center
 status: Complete
 category: Full-Stack
