@@ -1,19 +1,45 @@
 # Research experience — rendered in the homepage "Research" section (newest first).
 # Each entry: title, org, location, dates, status (pill), summary, points (bullets),
 # optional outcome + outcome_url (link rendered after the bullets).
+- title: Research Assistant — Bayesian Cognitive Modeling Lab
+  org: Prof. Michael D. Lee · UC Irvine
+  location: Irvine, CA
+  dates: Oct 2026 – Present
+  status: ACTIVE
+  summary: >-
+    Bayesian cognitive modeling of expertise to improve wisdom-of-the-crowd
+    aggregation.
+  points:
+    - Building a Bayesian Rasch (ability/difficulty) latent-truth model in JAGS that weights individual judgments by each person's inferred expertise, using the Bennett, Benjamin, Mistry & Steyvers (2018) dataset
+    - Extending the model from a single holistic expertise parameter to per-topic ability and difficulty parameters so it can represent multidimensional expertise across knowledge domains
+    - Surveying datasets in the lab's behavioral data repository to determine how existing cognitive models must be adapted to capture domain-specific expertise
+
+- title: Research Assistant — Learning and Decision Neuroscience Lab
+  org: Prof. Mimi Liljeholm · UC Irvine
+  location: Irvine, CA
+  dates: Oct 2026 – Present
+  status: ACTIVE
+  summary: >-
+    Deep reinforcement learning models of observational and social learning,
+    part of the lab's Agentic AI Experiment.
+  points:
+    - Combining the neural model of observational learning in Liljeholm, Molloy & O'Doherty (2012, J Neurosci) with the imitation-based social conformity model in Mauter & Liljeholm (2026, Brain and Behavior) into a single deep RL project
+    - Implementing observational Q-learning agents to compare imitation (copying actions) with emulation (inferring others' goals) as mechanisms of social learning
+    - Training RL agents in MiniGrid environments to test instrumental control (outcome divergence) as an intrinsic reward surrogate
+
 - title: AI Evaluation Research
   org: Handshake AI
   location: Irvine, CA
   dates: Nov 2025 – Present
   status: ACTIVE
   summary: >-
-    Independent research on evaluating and improving large language models
-    across text, audio, and visual inputs.
+    Training and evaluating multimodal AI systems across text, audio, and
+    visual inputs.
   points:
-    - Designed domain-specific prompts and detailed scoring rubrics to benchmark LLM performance in scientific and technical subjects
-    - Conducted independent research to strengthen prompt design, scoring criteria, and error-analysis processes
-    - Evaluated model responses for factual accuracy, reasoning quality, and clarity, driving measurable gains in reliability
-    - Trained and evaluated multimodal AI systems to increase response quality and cross-modality accuracy
+    - Trained and evaluated multimodal AI systems across text, audio, and visual inputs, increasing response quality and cross-modal accuracy by ~15%
+    - Developed and tested domain-specific prompts to benchmark large language model performance in scientific and technical subjects
+    - Built detailed scoring rubrics to evaluate AI model outputs, increasing precision and consistency of evaluations across multiple AI labs
+    - Designed AutoCAD Mechanical training data through multiple weeklong evaluation projects to improve model accuracy on professional CAD workflows
 
 - title: Research Assistant — Spintronics Lab
   org: University of Denver
@@ -24,9 +50,8 @@
     Experimental condensed-matter physics research on spin-orbit torque
     measurement, culminating in a co-authored peer-reviewed paper.
   points:
-    - Developed LabVIEW programs for efficient, precise control of sensitive measurement equipment
-    - Fabricated and validated thin-film devices using vacuum sputtering, lithography, and verification techniques
-    - Collaborated on AutoCAD designs to build custom tools enhancing lab measurement capabilities
-    - Supported experimental workflows used in active physics research
+    - Developed LabVIEW programs for precise control of sensitive measurement equipment in an active physics research environment
+    - Collaborated on AutoCAD designs to build custom tools enhancing lab measurement capabilities and reducing manual oversight by ~90%
+    - Fabricated and validated ~10nm thin-film devices using vacuum sputtering, lithography, and related fabrication techniques for state-of-the-art MRAM research
   outcome: "Co-authored “Field-like torque measured via a Wheatstone bridge” in the Journal of Applied Physics (2025)"
   outcome_url: https://doi.org/10.1063/5.0300521

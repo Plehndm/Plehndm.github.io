@@ -25,6 +25,7 @@ Content is data-driven — most updates never touch markup:
 | Current roles ("What I'm doing now" + terminal status log) | `_data/roles.yml` |
 | Publications (homepage cards + terminal status log) | `_data/publications.yml` |
 | Research experience ("Research" section) | `_data/research.yml` |
+| Awards & honors ("Awards & honors" section) | `_data/awards.yml` |
 | Social links (contact section + footer) | `_data/socials.yml` |
 | Projects (cards + detail pages) | `_posts/YYYY-MM-DD-slug.md` |
 | Résumé PDF | `assets/pdf/David_Plehn_Resume.pdf` |

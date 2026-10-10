@@ -28,7 +28,7 @@ layout: default
         </div>
         <div class="terminal-screen">
           <p class="term-line" data-cmd><span class="term-prompt">david@uci:~$</span> <span class="term-cmd">whoami</span></p>
-          <p class="term-line term-out">CS (Intelligent Systems) + Quant Econ @ UC Irvine · Statistics minor</p>
+          <p class="term-line term-out">CS (Intelligent Systems) + Quant Econ @ UC Irvine · Statistics minor · Secret clearance</p>
           <p class="term-line" data-cmd><span class="term-prompt">david@uci:~$</span> <span class="term-cmd">cat status.log</span></p>
           {% for role in site.data.roles %}
           <p class="term-line term-out"><span class="term-tag term-tag--active">[{{ role.status }}]</span> {{ role.title }} @ {{ role.org }}</p>
@@ -136,5 +136,24 @@ layout: default
       <a class="btn btn--primary" href="{{ pub.doi }}" target="_blank" rel="noopener">Read the paper <svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
     </article>
     {% endfor %}
+  </div>
+</section>
+
+<!-- Honors -->
+<section id="honors" class="section">
+  <div class="inner">
+    <p class="eyebrow reveal"><span class="eyebrow-path">~/honors</span></p>
+    <h2 class="section-title reveal">Awards &amp; honors</h2>
+    <ul class="honors-grid">
+      {% for award in site.data.awards %}
+      <li class="honor-card reveal">
+        <span class="honor-marker" aria-hidden="true">[*]</span>
+        <div>
+          <p class="honor-title">{{ award.title }}</p>
+          {% if award.org %}<p class="honor-org">{{ award.org }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
 </section>

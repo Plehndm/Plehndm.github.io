@@ -1,0 +1,13 @@
+# Awards & honors — rendered in the homepage "Honors" section (in display order).
+# Each entry: title, org (optional), note (optional short qualifier).
+- title: 1st Place, MIC2 Intern Project Competition
+  org: Lockheed Martin
+
+- title: 2nd Place, CodeQuest Competition
+  org: Lockheed Martin
+
+- title: Eagle Scout
+  org: Boy Scouts of America
+
+- title: 1st Degree Black Belt
+  org: Karate

@@ -6,7 +6,7 @@ image: assets/images/projects/gpt-from-scratch.svg
 image_alt: "Illustration of GPT internals: causal self-attention heatmap, transformer block stack, and BPE token stream predicting the next token"
 status: WIP
 category: AI/ML
-year: 2025
+year: 2026
 featured: true
 repo: https://github.com/Plehndm/LLM_From_Scratch
 tags:
@@ -14,14 +14,17 @@ tags:
   - Python
   - Transformers
   - BPE Tokenization
+  - CUDA
+  - RLHF
   - Distributed Training
 ---
 
-A ground-up implementation of a GPT-style language model built to understand transformer internals: self-attention, Byte Pair Encoding, and distributed training. Developed in Jupyter notebooks with PyTorch DDP support, the project prioritizes architectural clarity over rapid prototyping. Work in progress.
+A ground-up implementation of a GPT-style language model built to understand transformer internals: multi-head self-attention, Byte Pair Encoding, GPU training, and RLHF-style fine-tuning. Developed in Jupyter notebooks with PyTorch on CUDA (via WSL2) and DDP support, the project prioritizes architectural clarity over rapid prototyping. Work in progress.
 
 ## Highlights
 
-- Transformer architecture and self-attention implemented from first principles
-- Byte Pair Encoding (BPE) tokenization pipeline for language modeling
+- Multi-head attention transformer architecture modeled after GPT, with core LLM logic implemented from first principles
+- PyTorch CUDA training through a WSL2 environment to leverage NVIDIA GPU compute
+- Byte Pair Encoding (BPE) tokenizer and fine-tuned NLP embeddings for the initial vocabulary
+- Output fine-tuning using an RLHF methodology
 - Distributed training support with PyTorch DDP
-- Educational codebase demonstrating deep understanding of modern LLM internals

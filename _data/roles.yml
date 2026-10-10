@@ -1,21 +1,42 @@
 # Current roles — rendered in the "What I'm doing now" section (newest first).
 # Each entry: title, org, location, dates, summary, status (shown as a terminal pill).
-- title: Software & Systems Engineer Intern
+- title: Research Assistant
+  org: Bayesian Cognitive Modeling Lab (Prof. Michael D. Lee), UC Irvine
+  location: Irvine, CA
+  dates: Oct 2026 – Present
+  status: ACTIVE
+  summary: >-
+    Building a Bayesian Rasch latent-truth model in JAGS that weights
+    wisdom-of-the-crowd judgments by each person's inferred expertise, and
+    extending it to per-topic ability and difficulty parameters.
+
+- title: Research Assistant
+  org: Learning and Decision Neuroscience Lab (Prof. Mimi Liljeholm), UC Irvine
+  location: Irvine, CA
+  dates: Oct 2026 – Present
+  status: ACTIVE
+  summary: >-
+    Deep reinforcement learning project on social learning — observational
+    Q-learning agents comparing imitation with emulation, and MiniGrid agents
+    testing instrumental control as an intrinsic reward.
+
+- title: Systems & Software Engineer Intern
   org: Lockheed Martin
   location: Colorado Springs, CO
   dates: Jun 2026 – Present
   status: ACTIVE
   summary: >-
-    Automating mission-critical systems with Python, modernizing network
-    configurations, and applying DevOps practices to improve reliability,
-    security, and latency.
+    Designed and deployed an enterprise-wide RAG AI chatbot for the C2BMC
+    program, integrated AWS Bedrock AI tooling into GitLab CI/CD pipelines,
+    and automated Cameo MBSE projects, Ansible playbooks, and a ContainerLab
+    virtual network environment for mission-critical systems.
 
-- title: AI Trainer
+- title: Artificial Intelligence Trainer
   org: Handshake AI
   location: Irvine, CA
   dates: Nov 2025 – Present
   status: ACTIVE
   summary: >-
-    Benchmarking and evaluating large language models across text, audio, and
-    vision — designing domain-specific prompts, scoring rubrics, and error
-    analysis to drive measurable gains in model accuracy and reasoning.
+    Training and evaluating multimodal AI systems across text, audio, and
+    vision — domain-specific prompts, scoring rubrics, and AutoCAD training
+    data that lifted cross-modal accuracy by roughly 15%.
